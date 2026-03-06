@@ -33,7 +33,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npx ng build --configuration production --base-href "/<repo>/"
+        run: npx ng build --configuration production --base-href "/ng-21/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
