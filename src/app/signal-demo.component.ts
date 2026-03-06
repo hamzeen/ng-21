@@ -14,7 +14,7 @@ const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   styleUrls: ['./signal-demo.component.css'],
 })
 export class SignalDemoComponent {
-  user = 'Clavin';
+  user = 'Calvin';
   todos = signal<{ text: string; completed: boolean }[]>(DEFAULT_TODOS);
   completedCount = computed(() => this.todos().filter((todo) => todo.completed).length);
 
