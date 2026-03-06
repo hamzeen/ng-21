@@ -1,0 +1,116 @@
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-700 via-purple-600 to-indigo-500 p-4"
+>
+  <!-- Card: fixed max height + flex column -->
+  <div
+    class="w-full max-w-md max-h-[85vh] rounded-3xl shadow-lg bg-violet-700/90 px-6 py-8 flex flex-col gap-6 overflow-hidden"
+  >
+    <p class="text-white text-lg font-semibold mb-2">Hi, {{ user }}</p>
+
+    <h3 class="text-white text-2xl font-bold mb-4">What do you want to do?</h3>
+
+    <!-- Summary card (non-scrolling) -->
+    <div class="rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm px-4 py-4 shrink-0">
+      <div class="flex items-center gap-4">
+        <div
+          class="w-12 h-12 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center shrink-0"
+        >
+          <i class="fa-solid fa-list-check text-white/80 text-lg"></i>
+        </div>
+
+        <div class="min-w-0">
+          <div class="text-white font-semibold text-base">Todo summary</div>
+          <div class="text-white/70 text-sm mt-0.5">
+            {{ completedCount() }} completed • {{ pendingCount() }} pending •
+            {{ totalCount() }} total
+          </div>
+
+          <div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden">
+            <div
+              class="h-full bg-cyan-300/90 rounded-full"
+              [style.width.%]="completionPercent()"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasks section: the ONLY scrollable area -->
+    <div class="flex-1 min-h-0 flex flex-col">
+      <div class="text-white font-medium mb-2 shrink-0">Your tasks</div>
+
+      <ul class="flex flex-col gap-3 overflow-y-auto pr-1">
+        @for (todo of todos(); track $index) {
+          <li
+            class="rounded-xl bg-violet-600/60 px-4 py-3 flex items-center justify-between gap-3 min-w-0"
+          >
+            <span class="flex items-center gap-2 flex-1 min-w-0">
+              <i
+                *ngIf="todo.completed"
+                class="fa-solid fa-check w-5 h-5 text-cyan-300 shrink-0"
+              ></i>
+              <i
+                *ngIf="!todo.completed"
+                class="fa-regular fa-hourglass-half w-5 h-5 text-indigo-200 shrink-0"
+              ></i>
+
+              <span
+                class="text-white text-base truncate"
+                [class.line-through]="todo.completed"
+                title="{{ todo.text }}"
+              >
+                {{ todo.text }}
+              </span>
+            </span>
+
+            <span class="flex gap-2 shrink-0">
+              <button
+                type="button"
+                class="text-xs px-3 py-1 rounded-lg bg-cyan-400 text-violet-900 font-bold shadow hover:bg-cyan-300 transition"
+                (click)="toggleTodo($index)"
+              >
+                {{ todo.completed ? 'Undo' : 'Done' }}
+              </button>
+
+              <button
+                type="button"
+                class="text-pink-400 hover:text-pink-300"
+                (click)="removeTodo($index)"
+                aria-label="Remove"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Footer form: always visible -->
+    <form
+      class="mt-2 flex items-center gap-2 shrink-0"
+      (submit)="addTodo(newTodo.value); newTodo.value = ''; $event.preventDefault()"
+    >
+      <input
+        #newTodo
+        class="flex-1 min-w-0 rounded-xl border-none px-4 py-3 bg-violet-600/60 text-white placeholder-indigo-200 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+        type="text"
+        placeholder="Add a new task..."
+      />
+
+      <button
+        class="shrink-0 rounded-lg bg-cyan-400 text-violet-900 px-5 py-3 font-bold shadow hover:bg-cyan-300 transition flex items-center justify-center"
+        type="submit"
+      >
+        Add
+      </button>
+    </form>
+  </div>
+</div>
