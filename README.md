@@ -1,16 +1,23 @@
-# YourProjectName
+# Samples: Angular 21
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
 
+### Async Data Fetching:
+
+Mock Users are fetched from the RandomUser API using Angular’s `httpResource()`.  
+The resource exposes `value`, `isLoading`, and `error` as signals, allowing the template to reactively render these states (without manual subscriptions or RxJS plumbing).
+
 ## Development server
 
-To start a local development server, run:
+To start a local development server (with live reload), run:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, navigate to `http://localhost:4200/`
+
+- available routes: `/`, `/list`, `/register`
 
 ## Code scaffolding
 
@@ -54,6 +61,7 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+## Deployment
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Deployment is automated via GitHub Actions.  
+A push to `origin` triggers the build and deployment pipeline.
