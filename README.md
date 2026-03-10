@@ -9,6 +9,28 @@ The resource exposes `value`, `isLoading`, and `error` as signals, allowing the 
 
 # JavaScript Concepts
 
+### trivia
+
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+```
+
+:// var is function scoped.
+
+```js
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+```
+
+:// let is block scoped
+
 ### 1. Variable Scope
 
 Variables declared with `let` or `const` are block-scoped.
