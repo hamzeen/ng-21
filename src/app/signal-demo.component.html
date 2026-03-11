@@ -5,7 +5,7 @@
   <div
     class="w-full max-w-md max-h-[85vh] rounded-3xl shadow-lg bg-violet-700/90 px-6 py-8 flex flex-col gap-6 overflow-hidden"
   >
-    <p class="text-white text-lg font-semibold mb-2">Hi, {{ user }}</p>
+    <p class="text-white text-lg font-semibold mb-2">Hi, {{ sessionStore.user()?.name }}</p>
 
     <h3 class="text-white text-2xl font-bold mb-4">What do you want to do?</h3>
 

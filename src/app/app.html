@@ -1,1 +1,11 @@
-<router-outlet />
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="xw-56 flex-none">
+    <app-navbar></app-navbar>
+  </aside>
+
+  <!-- Page Content -->
+  <main class="min-w-0 flex-1 overflow-auto bg-blue-50">
+    <router-outlet></router-outlet>
+  </main>
+</div>

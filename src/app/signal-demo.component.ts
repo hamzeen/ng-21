@@ -1,5 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { sessionStore } from './stores/session.store';
 
 const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   { text: 'buy chocolates', completed: true },
@@ -15,6 +16,7 @@ const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
 })
 export class SignalDemoComponent {
   user = 'Calvin';
+  sessionStore = sessionStore;
   todos = signal<{ text: string; completed: boolean }[]>(DEFAULT_TODOS);
   completedCount = computed(() => this.todos().filter((todo) => todo.completed).length);
 
@@ -30,6 +32,7 @@ export class SignalDemoComponent {
   });
 
   addTodo(text: string) {
+    sessionStore.updateUserName('Hamzeen');
     const trimmed = text.trim();
     if (trimmed) {
       this.todos.update((todos) => [...todos, { text: trimmed, completed: false }]);

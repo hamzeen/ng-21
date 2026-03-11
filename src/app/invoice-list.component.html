@@ -8,84 +8,86 @@
       } @else if (error()) {
         <div class="p-6 text-red-600 text-sm">Failed to load invoices. Please try again.</div>
       } @else if (invoicesResource.hasValue()) {
-        <div class="inline-block min-w-full shadow-md rounded-lg overflow-hidden">
-          <table class="min-w-full leading-normal">
-            <thead>
-              <tr>
-                <th
-                  class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
-                >
-                  Client / Invoice
-                </th>
-                <th
-                  class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
-                >
-                  Amount
-                </th>
-                <th
-                  class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
-                >
-                  Issued / Due
-                </th>
-                <th
-                  class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
-                >
-                  Status
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              @for (invoice of invoices(); track invoice.id) {
+        <div class="overflow-x-auto">
+          <div class="min-w-[720px] rounded-lg shadow-md overflow-hidden">
+            <table class="w-full leading-normal">
+              <thead>
                 <tr>
-                  <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <div class="flex items-center">
-                      <div class="size-10 shrink-0">
-                        <img
-                          class="h-full w-full rounded-full object-cover"
-                          [src]="invoice.avatar"
-                          [alt]="invoice.client"
-                        />
-                      </div>
-
-                      <div class="ml-3">
-                        <p class="text-gray-900">{{ invoice.client }}</p>
-                        <p class="text-gray-600">{{ invoice.id }}</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <p class="text-gray-900">${{ invoice.amount | number }}</p>
-                    <p class="text-gray-600">{{ invoice.currency }}</p>
-                  </td>
-
-                  <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <p class="text-gray-900">{{ invoice.issued }}</p>
-                    <p class="text-gray-600">{{ invoice.due }}</p>
-                  </td>
-
-                  <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                    <span
-                      class="relative inline-block px-3 py-1 font-semibold leading-tight"
-                      [class.text-green-900]="invoice.status === 'Paid'"
-                      [class.text-orange-900]="invoice.status === 'Pending'"
-                      [class.text-red-900]="invoice.status === 'Overdue'"
-                    >
-                      <span
-                        aria-hidden="true"
-                        class="absolute inset-0 rounded-full opacity-50"
-                        [class.bg-green-200]="invoice.status === 'Paid'"
-                        [class.bg-orange-200]="invoice.status === 'Pending'"
-                        [class.bg-red-200]="invoice.status === 'Overdue'"
-                      ></span>
-                      <span class="relative">{{ invoice.status }}</span>
-                    </span>
-                  </td>
+                  <th
+                    class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
+                  >
+                    Client / Invoice
+                  </th>
+                  <th
+                    class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
+                  >
+                    Amount
+                  </th>
+                  <th
+                    class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
+                  >
+                    Issued / Due
+                  </th>
+                  <th
+                    class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase text-gray-700"
+                  >
+                    Status
+                  </th>
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                @for (invoice of invoices(); track invoice.id) {
+                  <tr>
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <div class="flex items-center">
+                        <div class="size-10 shrink-0">
+                          <img
+                            class="h-full w-full rounded-full object-cover"
+                            [src]="invoice.avatar"
+                            [alt]="invoice.client"
+                          />
+                        </div>
+
+                        <div class="ml-3">
+                          <p class="text-gray-900">{{ invoice.client }}</p>
+                          <p class="text-gray-600">{{ invoice.id }}</p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <p class="text-gray-900">${{ invoice.amount | number }}</p>
+                      <p class="text-gray-600">{{ invoice.currency }}</p>
+                    </td>
+
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <p class="text-gray-900">{{ invoice.issued }}</p>
+                      <p class="text-gray-600">{{ invoice.due }}</p>
+                    </td>
+
+                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                      <span
+                        class="relative inline-block px-3 py-1 font-semibold leading-tight"
+                        [class.text-green-900]="invoice.status === 'Paid'"
+                        [class.text-orange-900]="invoice.status === 'Pending'"
+                        [class.text-red-900]="invoice.status === 'Overdue'"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="absolute inset-0 rounded-full opacity-50"
+                          [class.bg-green-200]="invoice.status === 'Paid'"
+                          [class.bg-orange-200]="invoice.status === 'Pending'"
+                          [class.bg-red-200]="invoice.status === 'Overdue'"
+                        ></span>
+                        <span class="relative">{{ invoice.status }}</span>
+                      </span>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       }
     </div>

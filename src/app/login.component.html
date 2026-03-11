@@ -1,0 +1,33 @@
+<!--
+<input [value]="name()" (input)="name.set($any($event.target).value)" placeholder="Name" />
+<button (click)="login()">Login</button>
+-->
+<div class="flex min-h-screen items-center justify-center bg-gray-100">
+  <div class="w-full max-w-md text-center">
+    <!-- icon -->
+    <div class="flex justify-center mb-6">
+      <div class="flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+        <i class="fa-solid fa-user text-green-600 text-xl"></i>
+      </div>
+    </div>
+
+    <!-- title -->
+    <h2 class="text-3xl font-semibold text-gray-900 mb-6">Login</h2>
+
+    <!-- username input -->
+    <input
+      [value]="name()"
+      (input)="name.set($any($event.target).value)"
+      placeholder="Enter username"
+      class="w-full rounded-lg border border-gray-300 px-4 py-3 mb-6 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <!-- login button -->
+    <button
+      (click)="login()"
+      class="w-full rounded-xl bg-blue-600 py-4 text-lg font-medium text-white transition hover:bg-blue-700"
+    >
+      Confirm
+    </button>
+  </div>
+</div>
