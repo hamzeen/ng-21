@@ -108,3 +108,13 @@ A function that runs immediately after it is defined.
   console.log('Runs immediately');
 })();
 ```
+
+### SOLID Principles
+
+| Principle                 | Description                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------ |
+| S — Single Responsibility | A class should have one responsibility; promotes separation of concerns.       |
+| O — Open/Closed           | Open for extension, but closed for modification.                               |
+| L — Liskov Substitution   | Subtypes should be replaceable for their base types without breaking behavior. |
+| I — Interface Segregation | Clients should not be forced to depend on interfaces they do not use.          |
+| D — Dependency Inversion  | Depend on abstractions, not on concrete implementations.                       |
