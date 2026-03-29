@@ -49,6 +49,15 @@ import { sessionStore } from './stores/session.store';
             <i class="fa-regular fa-rectangle-list w-5 text-center text-sm"></i>
             <span class="text-sm font-medium">Invoice List</span>
           </a>
+
+          <a
+            routerLink="/icon-doc"
+            routerLinkActive="bg-white/10 text-white"
+            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
+          >
+            <i class="fa-regular fa-rectangle-list w-5 text-center text-sm"></i>
+            <span class="text-sm font-medium">Icon Documentation</span>
+          </a>
         </div>
       </nav>
 

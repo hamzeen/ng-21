@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { sessionStore } from './stores/session.store';
+import { IconComponent } from '../shared/components/icon/icon.component';
 
 const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   { text: 'buy chocolates', completed: true },
@@ -10,7 +11,7 @@ const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
 @Component({
   selector: 'app-signal-demo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IconComponent],
   templateUrl: './signal-demo.component.html',
   styleUrls: ['./signal-demo.component.css'],
 })

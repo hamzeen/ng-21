@@ -5,6 +5,7 @@ import { UserRegistrationComponent } from './user-registration.component';
 import { InvoiceListComponent } from './invoice-list.component';
 import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './login.component';
+import { IconDocComponent } from './icon-doc.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,11 @@ export const routes: Routes = [
     path: 'register',
     component: UserRegistrationComponent,
     title: 'User Registration',
+  },
+  {
+    path: 'icon-doc',
+    component: IconDocComponent,
+    title: 'Icon Documentation',
   },
   {
     path: 'list',
