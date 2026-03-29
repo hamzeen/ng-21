@@ -2,5 +2,5 @@
 
 // icon.registry.ts
 export function getIconPath(name: string): string {
-  return `/svgs/${name}.svg`; // ✅ no "assets" anymore
+  return `svgs/${name}.svg`; // ✅ no "assets" anymore
 }
