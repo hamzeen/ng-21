@@ -8,13 +8,13 @@
   <section>
     <h2 class="text-lg font-medium mb-4">Available Icons</h2>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="flex flex-wrap gap-6">
       @for (icon of icons; track icon) {
         <div
-          class="border border-gray-300 rounded-lg p-6 flex flex-col items-center gap-3 bg-gray-50 hover:bg-green-100 transition-all duration-200 cursor-pointer"
+          class="w-full md:w-[calc((100%-3rem)/3)] rounded-lg p-6 flex flex-col items-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
         >
           <app-icon [name]="icon" size="m"></app-icon>
-          <span class="text-sm text-gray-600">{{ icon }}</span>
+          <span class="text-gray-600">{{ icon }}</span>
         </div>
       }
     </div>
@@ -25,27 +25,26 @@
   <!-- ===================== -->
   <section>
     <h2 class="text-lg font-medium mb-4">Icon Sizes</h2>
-
-    <div class="grid grid-cols-3 gap-6">
+    <div class="flex flex-wrap gap-6">
       <div
-        class="cursor-pointer border border-gray-300 bg-gray-50 hover:bg-green-100 rounded-lg p-4 flex flex-col items-center gap-2"
+        class="w-full md:w-[calc((100%-3rem)/3)] rounded-lg p-6 flex flex-col items-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
       >
         <app-icon name="house" size="s"></app-icon>
-        <span class="text-sm text-gray-600">Small (8px)</span>
+        <span>Small (8px)</span>
       </div>
 
       <div
-        class="cursor-pointer border border-gray-300 bg-gray-50 hover:bg-green-100 rounded-lg p-4 flex flex-col items-center gap-2"
+        class="w-full md:w-[calc((100%-3rem)/3)] rounded-lg p-6 flex flex-col items-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
       >
         <app-icon name="house" size="m"></app-icon>
-        <span class="text-sm text-gray-600">Medium (16px)</span>
+        <span>Medium (16px)</span>
       </div>
 
       <div
-        class="cursor-pointer border border-gray-300 bg-gray-50 hover:bg-green-100 rounded-lg p-4 flex flex-col items-center gap-2"
+        class="w-full md:w-[calc((100%-3rem)/3)] rounded-lg p-6 flex flex-col items-center gap-3 bg-gray-50 hover:bg-gray-100 transition-all duration-200 cursor-pointer"
       >
         <app-icon name="house" size="l"></app-icon>
-        <span class="text-sm text-gray-600">Large (24px)</span>
+        <span>Large (24px)</span>
       </div>
     </div>
   </section>
