@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { SignalDemoComponent } from './signal-demo.component';
+import { TasksComponent } from './components/tasks.component';
 import { SignalComputedDemoComponent } from './signal-computed-demo.component';
 import { UserRegistrationComponent } from './user-registration.component';
 import { InvoiceListComponent } from './invoice-list.component';
@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: SignalDemoComponent,
+    component: TasksComponent,
     title: 'My Tasks',
     canActivate: [authGuard],
   },

@@ -1,6 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { sessionStore } from './stores/session.store';
+import { sessionStore } from '../stores/session.store';
 
 const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   { text: 'buy chocolates', completed: true },
@@ -8,13 +8,13 @@ const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
 ];
 
 @Component({
-  selector: 'app-signal-demo',
+  selector: 'app-tasks',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './signal-demo.component.html',
-  styleUrls: ['./signal-demo.component.css'],
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css'],
 })
-export class SignalDemoComponent {
+export class TasksComponent {
   user = 'Calvin';
   sessionStore = sessionStore;
   todos = signal<{ text: string; completed: boolean }[]>(DEFAULT_TODOS);
