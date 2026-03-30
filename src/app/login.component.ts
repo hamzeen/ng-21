@@ -1,20 +1,31 @@
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { sessionStore } from './stores/session.store';
+import { Forms } from './constants/form-factory';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  name = signal('');
+  form = signal(Forms.login());
+
+  @ViewChild('nameInput') nameInput!: ElementRef<HTMLInputElement>;
 
   constructor(private router: Router) {}
 
+  ngAfterViewInit() {
+    this.nameInput.nativeElement.focus();
+  }
+
   login(): void {
+    const { name } = this.form().getRawValue();
+
     sessionStore.login({
       id: crypto.randomUUID(),
-      name: this.name() || 'Demo User',
+      name: name || 'Demo User',
       email: 'demo@example.com',
     });
 

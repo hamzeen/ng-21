@@ -10,8 +10,16 @@ export function createRegistrationForm() {
   });
 }
 
+export function createLoginForm() {
+  return fb.group({
+    name: fb.control('', [Validators.required]),
+  });
+}
+
 export type RegistrationForm = ReturnType<typeof createRegistrationForm>;
+export type LoginForm = ReturnType<typeof createLoginForm>;
 
 export const Forms = {
   registration: createRegistrationForm,
+  login: createLoginForm,
 } as const;
