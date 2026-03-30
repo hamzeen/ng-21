@@ -3,9 +3,9 @@ import { TasksComponent } from './features/tasks/tasks.component';
 import { SignalComputedDemoComponent } from './features/signals-demo/signal-computed-demo.component';
 import { UserRegistrationComponent } from './features/registration/user-registration.component';
 import { InvoiceListComponent } from './features/invoice-list/invoice-list.component';
-import { IconDocComponent } from './features/icon-component/icon-doc.component';
 import { LoginComponent } from './features/login/login.component';
 import { authGuard } from './core/guards/auth.guard';
+import { IconDocComponent } from '../shared/ui/icon-preview/icon-doc.component';
 
 export const routes: Routes = [
   {

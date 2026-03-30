@@ -3,8 +3,8 @@
 import { Component, Input, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ICON_SIZES, IconSize } from '../../icons/icon.types';
-import { getIconPath } from '../../icons/icon.registry';
+import { ICON_SIZES, IconSize } from '../../icon-system/icon.types';
+import { getIconPath } from '../../icon-system/icon.registry';
 
 const iconCache = new Map<string, SafeHtml>();
 

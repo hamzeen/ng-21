@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { sessionStore } from '../stores/session.store';
+import { sessionStore } from '../../../app/core/store/session.store';
 
 @Component({
   selector: 'app-navbar',
