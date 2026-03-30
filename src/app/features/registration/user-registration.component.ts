@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Forms } from '../constants/form-factory';
+import { Forms } from '../../../shared/constants/form-factory';
 
 @Component({
   selector: 'app-user-registration',

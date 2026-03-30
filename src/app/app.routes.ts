@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { TasksComponent } from './components/tasks.component';
-import { SignalComputedDemoComponent } from './components/signal-computed-demo.component';
-import { UserRegistrationComponent } from './components/user-registration.component';
-import { InvoiceListComponent } from './components/invoice-list.component';
-import { authGuard } from './guards/auth.guard';
-import { IconDocComponent } from './components/icon-doc.component';
-import { LoginComponent } from './components/login.component';
+import { TasksComponent } from './features/tasks/tasks.component';
+import { SignalComputedDemoComponent } from './features/signals-demo/signal-computed-demo.component';
+import { UserRegistrationComponent } from './features/registration/user-registration.component';
+import { InvoiceListComponent } from './features/invoice-list/invoice-list.component';
+import { IconDocComponent } from './features/icon-component/icon-doc.component';
+import { LoginComponent } from './features/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {

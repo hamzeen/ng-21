@@ -1,6 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { sessionStore } from '../stores/session.store';
+import { sessionStore } from '../../stores/session.store';
 
 const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   { text: 'buy chocolates', completed: true },
