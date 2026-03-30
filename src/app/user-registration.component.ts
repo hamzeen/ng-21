@@ -1,6 +1,7 @@
-import { Component, signal, computed } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, JsonPipe } from '@angular/common';
+import { Forms } from './constants/form-factory';
 
 @Component({
   selector: 'app-user-registration',
@@ -9,13 +10,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
   templateUrl: './user-registration.component.html',
 })
 export class UserRegistrationComponent {
-  form = signal(
-    new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    }),
-  );
+  form = signal(Forms.registration());
 
   formState = signal(this.form().value);
 
