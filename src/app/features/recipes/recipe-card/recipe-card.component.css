@@ -1,0 +1,4 @@
+/* Recipe Card Styles */
+:host {
+  display: block;
+}

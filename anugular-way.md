@@ -4,6 +4,23 @@
 
 ## folder structure
 
+## HttpResouce
+
+- httpResource() was introduced in Angular v17 (as part of the new signals-first data fetching APIs).
+- It is NOT just a wrapper around HttpClient — it’s a reactive abstraction built on top of it.
+
+> http resouce
+
+```js
+const users = httpResource(() => this.http.get('/api/users'));
+```
+
+> RxJS swtichmap
+
+```js
+this.http.get('/user').pipe(switchMap((user) => this.http.get(`/prefs/${user.id}`)));
+```
+
 ## track
 
 ```js
