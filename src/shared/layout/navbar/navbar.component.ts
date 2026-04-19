@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { sessionStore } from '../../../app/core/store/session.store';
+import { NAV_LINKS } from '../../constants/nav-links.config';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   template: `
     <aside class="flex h-screen w-64 flex-col bg-slate-950 text-white">
       <div class="border-b border-white/10 px-6 py-5">
@@ -14,59 +16,17 @@ import { sessionStore } from '../../../app/core/store/session.store';
 
       <nav class="flex-1 px-3 py-4">
         <div class="space-y-1">
-          <a
-            routerLink="/"
-            routerLinkActive="bg-white/10 text-white"
-            [routerLinkActiveOptions]="{ exact: true }"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-solid fa-list-check w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">My Tasks</span>
-          </a>
-          <a
-            routerLink="/signal-computed-demo"
-            routerLinkActive="bg-white/10 text-white"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-solid fa-bolt w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">Signal Computed Demo</span>
-          </a>
-
-          <a
-            routerLink="/register"
-            routerLinkActive="bg-white/10 text-white"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-regular fa-user w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">User Registration</span>
-          </a>
-
-          <a
-            routerLink="/list"
-            routerLinkActive="bg-white/10 text-white"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-regular fa-rectangle-list w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">Invoice List</span>
-          </a>
-
-          <a
-            routerLink="/recipes"
-            routerLinkActive="bg-white/10 text-white"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-solid fa-utensils w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">Recipes</span>
-          </a>
-
-          <a
-            routerLink="/icon-doc"
-            routerLinkActive="bg-white/10 text-white"
-            class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
-          >
-            <i class="fa-regular fa-rectangle-list w-5 text-center text-sm"></i>
-            <span class="text-sm font-medium">Icon Documentation</span>
-          </a>
+          @for (link of navLinks; track link.route) {
+            <a
+              [routerLink]="link.route"
+              routerLinkActive="bg-white/10 text-white"
+              [routerLinkActiveOptions]="{ exact: link.exact || false }"
+              class="flex items-center gap-3 rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
+            >
+              <i [class]="link.icon + ' w-5 text-center text-sm'"></i>
+              <span class="text-sm font-medium">{{ link.label }}</span>
+            </a>
+          }
         </div>
       </nav>
 
@@ -103,6 +63,7 @@ import { sessionStore } from '../../../app/core/store/session.store';
 })
 export class NavbarComponent {
   readonly sessionStore = sessionStore;
+  readonly navLinks = NAV_LINKS;
   private readonly router = inject(Router);
 
   logout(): void {

@@ -1,8 +1,8 @@
 import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Forms } from '../../../shared/constants/form.constants';
-import { sessionStore } from '../../core/store/session.store';
+import { Forms } from '../../../../../shared/constants/form.constants';
+import { sessionStore } from '../../../../core/store/session.store';
 
 @Component({
   selector: 'app-login',

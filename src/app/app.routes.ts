@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { TasksComponent } from './features/tasks/tasks.component';
-import { SignalComputedDemoComponent } from './features/signals-demo/signal-computed-demo.component';
-import { UserRegistrationComponent } from './features/registration/user-registration.component';
-import { InvoiceListComponent } from './features/invoice-list/invoice-list.component';
-import { LoginComponent } from './features/login/login.component';
-import { RecipesComponent } from './features/recipes/recipes.component';
-import { RecipeListComponent } from './features/recipes/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './features/recipes/recipe-detail/recipe-detail.component';
+import { TasksComponent } from './features/tasks/components/tasks/tasks.component';
+import { SignalComputedDemoComponent } from './features/signals-demo/components/signal-demo/signal-computed-demo.component';
+import { UserRegistrationComponent } from './features/registration/components/user-registration/user-registration.component';
+import { InvoiceListComponent } from './features/invoice-list/components/invoice-list/invoice-list.component';
+import { LoginComponent } from './features/login/components/login/login.component';
+import { RecipesComponent } from './features/recipes/components/recipes/recipes.component';
+import { RecipeListComponent } from './features/recipes/components/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './features/recipes/components/recipe-detail/recipe-detail.component';
 import { authGuard } from './core/guards/auth.guard';
 import { IconDocComponent } from '../shared/ui/icon-preview/icon-doc.component';
 
