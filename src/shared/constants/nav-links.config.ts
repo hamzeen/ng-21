@@ -15,7 +15,7 @@ export const NAV_LINKS: NavLink[] = [
   {
     route: '/signal-computed-demo',
     icon: 'fa-solid fa-bolt',
-    label: 'Signal Computed Demo',
+    label: 'Signals Demo',
   },
   {
     route: '/register',
