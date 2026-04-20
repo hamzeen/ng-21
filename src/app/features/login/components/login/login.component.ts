@@ -29,6 +29,13 @@ export class LoginComponent {
       email: 'demo@example.com',
     });
 
-    this.router.navigate(['/']);
+    const returnUrl = sessionStore.returnUrl();
+    sessionStore.clearReturnUrl();
+
+    if (returnUrl) {
+      this.router.navigateByUrl(returnUrl);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

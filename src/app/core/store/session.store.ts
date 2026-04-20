@@ -9,6 +9,7 @@ export type SessionUser = {
 
 type SessionState = {
   user: SessionUser | null;
+  returnUrl: string | null;
 };
 
 const STORAGE_KEY = 'app_session';
@@ -21,13 +22,13 @@ function loadFromSessionStorage(): SessionState {
   const raw = sessionStorage.getItem(STORAGE_KEY);
 
   if (!raw) {
-    return { user: null };
+    return { user: null, returnUrl: null };
   }
 
   try {
     return JSON.parse(raw) as SessionState;
   } catch {
-    return { user: null };
+    return { user: null, returnUrl: null };
   }
 }
 
@@ -38,17 +39,38 @@ function persist(stateValue: SessionState): void {
 export const sessionStore = {
   user: computed(() => state().user),
   isAuthenticated: computed(() => !!state().user),
+  returnUrl: computed(() => state().returnUrl),
 
   login(user: SessionUser): void {
-    const newState: SessionState = { user };
+    const newState: SessionState = { user, returnUrl: state().returnUrl };
     state.set(newState);
     persist(newState);
   },
 
   logout(): void {
-    const newState: SessionState = { user: null };
+    const newState: SessionState = { user: null, returnUrl: null };
     state.set(newState);
     sessionStorage.removeItem(STORAGE_KEY);
+  },
+
+  setReturnUrl(url: string | null): void {
+    const currentState = state();
+    const newState: SessionState = {
+      ...currentState,
+      returnUrl: url,
+    };
+    state.set(newState);
+    persist(newState);
+  },
+
+  clearReturnUrl(): void {
+    const currentState = state();
+    const newState: SessionState = {
+      ...currentState,
+      returnUrl: null,
+    };
+    state.set(newState);
+    persist(newState);
   },
 
   updateUserName(name: string): void {
