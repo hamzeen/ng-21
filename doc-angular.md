@@ -2,6 +2,8 @@
 
 ## icon system
 
+Design System: resolve icons using their name without filename.
+
 ## folder structure
 
 ## HttpResouce
