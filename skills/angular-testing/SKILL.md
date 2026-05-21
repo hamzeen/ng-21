@@ -1,13 +1,13 @@
 ---
 name: angular-testing
-description: Write unit tests for Angular 21 components and services using Jasmine and TestBed. Use when writing tests, testing signals, mocking dependencies, and ensuring code quality.
+description: Write unit tests for Angular 21 components and services using Vitest. Use when writing tests, testing signals, mocking dependencies, and ensuring code quality.
 ---
 
 # Angular Testing
 
 ## Overview
 
-Write comprehensive unit tests for Angular components and services using Jasmine and TestBed. Test behavior, not implementation details. Use signals by reading their values directly.
+Write comprehensive unit tests for Angular components and services using Vitest and TestBed. Test behavior, not implementation details. Use signals by reading their values directly.
 
 ## When to Use
 
@@ -135,36 +135,6 @@ it('should trigger effect on signal change', (done) => {
   expect(callCount).toBe(2);
 
   done();
-});
-```
-
-## Mocking Dependencies
-
-```typescript
-describe('TaskComponent', () => {
-  let component: TaskComponent;
-  let fixture: ComponentFixture<TaskComponent>;
-  let taskService: jasmine.SpyObj<TaskService>;
-
-  beforeEach(async () => {
-    const spy = jasmine.createSpyObj('TaskService', ['getTasks', 'deleteTask']);
-
-    await TestBed.configureTestingModule({
-      imports: [TaskComponent],
-      providers: [{ provide: TaskService, useValue: spy }],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(TaskComponent);
-    component = fixture.componentInstance;
-    taskService = TestBed.inject(TaskService) as jasmine.SpyObj<TaskService>;
-  });
-
-  it('should call getTasks on init', () => {
-    taskService.getTasks.and.returnValue(of([]));
-    fixture.detectChanges();
-
-    expect(taskService.getTasks).toHaveBeenCalled();
-  });
 });
 ```
 

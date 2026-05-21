@@ -1,5 +1,5 @@
 ---
-description: Run unit tests with Jasmine/Karma. Use TDD workflow — write failing tests, implement, verify. For bugs, use Prove-It pattern.
+description: Run unit tests with Vitest. Use TDD workflow — write failing tests, implement, verify. For bugs, use Prove-It pattern.
 ---
 
 Invoke the [test-driven-development](../../skills/test-driven-development/) skill.

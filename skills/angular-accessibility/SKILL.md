@@ -228,33 +228,6 @@ export class DialogComponent {
 </button>
 ```
 
-## Testing for Accessibility
-
-```typescript
-// Use axe-core for automated testing
-import { axe, toHaveNoViolations } from 'jasmine-axe';
-
-describe('TaskComponent - Accessibility', () => {
-  let component: TaskComponent;
-  let fixture: ComponentFixture<TaskComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TaskComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(TaskComponent);
-    component = fixture.componentInstance;
-  });
-
-  it('should have no accessibility violations', async () => {
-    fixture.detectChanges();
-    const results = await axe(fixture.nativeElement);
-    expect(results).toHaveNoViolations();
-  });
-});
-```
-
 ## Red Flags
 
 - ✗ Color as sole indicator of state
