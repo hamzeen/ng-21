@@ -1,120 +1,184 @@
 # Samples: Angular 21
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+A modern Angular 21 starter template for enterprise-grade frontend applications.
 
-### Async Data Fetching:
+Built with standalone APIs, Signals, `httpResource`, Tailwind CSS, Vitest testing, and AI-assisted development workflows powered by Claude Code templates.
 
-Mock Users are fetched from the RandomUser API using Angular’s `httpResource()`.  
-The resource exposes `value`, `isLoading`, and `error` as signals, allowing the template to reactively render these states (without manual subscriptions or RxJS plumbing).
+Designed to provide a scalable foundation for modern Angular architecture and frontend engineering practices.
 
-# JavaScript Concepts
+---
 
-### trivia
+## ✨ Features
 
-```js
-for (var i = 0; i < 5; i++) {
-  setTimeout(() => {
-    console.log(i);
-  }, 1000);
-}
+### Angular 21 Modern APIs
+
+- Standalone Components
+- Angular Signals
+- `computed()` and `effect()`
+- `input()` / `output()`
+- `inject()`
+- `httpResource()`
+- Route-level lazy loading
+- OnPush change detection
+- Typed Reactive Forms
+
+### UI & Styling
+
+- Tailwind CSS integration
+- Responsive layouts
+- Gradient-based modern UI
+- Reusable UI patterns
+- Component-driven structure
+
+### Developer Experience
+
+- Hot reload development server
+- GitHub Actions deployment pipeline
+- AI-assisted development workflows
+- Structured Claude Code commands
+- Pre-configured review and audit templates
+
+### Testing
+
+- Unit testing with Vitest
+- Angular Testing Utilities
+- Fast test execution
+- Modern Vite-powered testing workflow
+
+---
+
+# 🤖 Claude Code Template
+
+This repository includes a custom Claude Code setup focused on engineering quality and architectural consistency.
+
+## Included Commands
+
+| Command   | Purpose                                                                                |
+| --------- | -------------------------------------------------------------------------------------- |
+| `/review` | Multi-axis code review (correctness, readability, architecture, security, performance) |
+| `/audit`  | General repository quality and architecture inspection                                 |
+| `/test`   | Test execution and validation workflow                                                 |
+| `/build`  | Production build verification                                                          |
+| `/commit` | Structured commit generation workflow                                                  |
+
+## Template Highlights
+
+- Enforces engineering-focused reviews
+- Encourages architectural consistency
+- Promotes performance and security awareness
+- Helps standardize development workflows
+- Designed for Angular-centric frontend projects
+- Optimized for AI-assisted development sessions
+
+---
+
+# 🚀 Getting Started
+
+## Development Server
+
+Start the local development server:
+
+```bash
+ng serve
 ```
 
-:// var is function scoped.
+Application runs at:
 
-```js
-for (let i = 0; i < 5; i++) {
-  setTimeout(() => {
-    console.log(i);
-  }, 1000);
-}
+```txt
+http://localhost:4200
 ```
 
-:// let is block scoped
+### Available Routes
 
-### 1. Variable Scope
+| Route       | Description               |
+| ----------- | ------------------------- |
+| `/`         | Home page                 |
+| `/list`     | Example list view         |
+| `/register` | Registration form example |
 
-Variables declared with `let` or `const` are block-scoped.
+---
 
-```js
-let x = 1;
+# 🛠️ Commands
 
-{
-  let x = 2;
-  console.log(x); // 2
-}
+## Angular CLI Commands
 
-console.log(x); // 1
+| Command                                | Description                |
+| -------------------------------------- | -------------------------- |
+| `ng serve`                             | Start development server   |
+| `ng build`                             | Create production build    |
+| `ng test`                              | Run unit tests with Vitest |
+| `ng e2e`                               | Run end-to-end tests       |
+| `ng generate component component-name` | Generate a new component   |
+| `ng generate --help`                   | List available schematics  |
+
+---
+
+# 🧪 Testing
+
+Unit testing is powered by Vitest for fast and modern testing workflows.
+
+Run tests:
+
+```bash
+ng test
 ```
 
-### 2. Closure
+---
 
-function remembers variables from its outer scope.
+# 📦 Building
 
-```js
-function counter() {
-  let count = 0;
+Create a production build:
 
-  return function () {
-    count++;
-    console.log(count);
-  };
-}
-
-const increment = counter();
-increment(); // 1
-increment(); // 2
+```bash
+ng build
 ```
 
-### 3. Destructuring
+Build artifacts are generated in:
 
-Extract values from objects easily.
-
-```js
-const user = { name: 'Alex', age: 30 };
-
-const { name, age } = user;
-
-console.log(name); // Alex
-console.log(age); // 30
+```txt
+dist/
 ```
 
-### 4. Spread Operator
+Production builds include Angular optimization for:
 
-Expand elements of arrays or objects.
+- Performance
+- Tree shaking
+- Bundle minimization
+- Ahead-of-Time (AOT) compilation
 
-```js
-const nums = [1, 2, 3];
-const moreNums = [...nums, 4, 5];
+---
 
-console.log(moreNums); // [1, 2, 3, 4, 5]
-```
+# 🚀 Deployment
 
-### 5. Hoisting
+Deployment is automated using GitHub Actions.
 
-Declarations move to the top during compilation.
+Every push to `origin` triggers:
 
-```js
-console.log(a); // undefined
+1. Build pipeline
+2. Test execution
+3. Deployment workflow
 
-var a = 5;
-```
+---
 
-### 6. IIFE (Immediately Invoked Function Expression)
+# 🏗️ Tech Stack
 
-A function that runs immediately after it is defined.
+| Technology     | Purpose                       |
+| -------------- | ----------------------------- |
+| Angular 21     | Frontend framework            |
+| Tailwind CSS   | Utility-first CSS framework   |
+| Vitest         | Vite-native testing framework |
+| GitHub Actions | CI/CD platform                |
+| Claude Code    | AI-assisted workflows         |
 
-```js
-(function () {
-  console.log('Runs immediately');
-})();
-```
+---
 
-### SOLID Principles
+# 📚 Goals
 
-| Principle                 | Description                                                                    |
-| ------------------------- | ------------------------------------------------------------------------------ |
-| S — Single Responsibility | A class should have one responsibility; promotes separation of concerns.       |
-| O — Open/Closed           | Open for extension, but closed for modification.                               |
-| L — Liskov Substitution   | Subtypes should be replaceable for their base types without breaking behavior. |
-| I — Interface Segregation | Clients should not be forced to depend on interfaces they do not use.          |
-| D — Dependency Inversion  | Depend on abstractions, not on concrete implementations.                       |
+This repository explores:
+
+- Modern Angular architecture
+- Signals-based state management
+- Angular-native async patterns
+- Frontend scalability patterns
+- Developer tooling and automation
+- AI-assisted engineering workflows
