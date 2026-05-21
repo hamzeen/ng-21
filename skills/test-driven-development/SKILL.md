@@ -280,3 +280,70 @@ Use mocks only when the real implementation is slow, non-deterministic, or has u
 - [ ] Coverage hasn't decreased (if tracked)
 
 **Note**: Run tests after each change that could affect results. After a clean run, re-running the same command without code changes adds no confidence.
+
+## Best Practices (Make Tests Easy to Write and Maintain)
+
+Follow these conventions to keep test writing fast, predictable and low-friction:
+
+- **File organization & names**: place unit tests alongside code using `.spec.ts` suffix (e.g. `foo.service.spec.ts` or `components/foo/foo.component.spec.ts`). Keep tests small and focused.
+
+- **Use Vitest + @testing-library/angular for components**: prefer `render()` for DOM-oriented tests and plain class instantiation for logic-only tests. This keeps tests fast and avoids heavy TestBed wiring when unnecessary.
+
+- **Test template (AAA)**: follow Arrange-Act-Assert strictly.
+
+  ```ts
+  it('does X', () => {
+    // Arrange
+    const sut = new MyClass();
+
+    // Act
+    const out = sut.doSomething();
+
+    // Assert
+    expect(out).toBe(expected);
+  });
+  ```
+
+- **Component test template**:
+
+  ```ts
+  import { render, screen } from '@testing-library/angular';
+  import { MyComponent } from './my.component';
+
+  it('renders list', async () => {
+    const { container } = await render(MyComponent, { imports: [] });
+    expect(container.querySelectorAll('li').length).toBeGreaterThan(0);
+  });
+  ```
+
+- **Mocking & spies**: prefer simple fakes or in-memory implementations. Use `vi.spyOn()` for spying. Mock only external effects (network, file system, timers).
+
+- **Signals & reactivity**: test signal state by calling the signal (`mySignal()`) and by invoking the action that updates it. Avoid relying on implicit change detection in unit tests.
+
+- **No fragile timing**: avoid timers and sleeps; use deterministic mocks or `vi.useFakeTimers()` when necessary.
+
+- **Small & fast**: favor unit tests that run in milliseconds. Use integration tests sparingly for cross-module flows.
+
+- **One behavior per test**: keep tests focused on a single expectation or concept to ease debugging and maintenance.
+
+- **Use stable test data**: create factories or builders for test objects (`createTestUser()`) to keep tests readable and replaceable.
+
+- **CI & coverage**: run `npm test -- --coverage` in CI and enforce sensible thresholds (e.g., 70–80% overall or per-package where practical). Fail build on regressions.
+
+- **Local scripts**: add convenient scripts to `package.json`:
+
+  ```json
+  {
+    "scripts": {
+      "test": "vitest",
+      "test:watch": "vitest --watch",
+      "test:coverage": "vitest --coverage"
+    }
+  }
+  ```
+
+- **Document test strategy**: keep this `SKILL.md` and repo README updated with the chosen runner, commands, and where to add new tests.
+
+- **Stability checks**: if a test is flaky, mark it and create an issue; do not leave flaky tests enabled.
+
+Following these will make future unit tests faster to author and more reliable.

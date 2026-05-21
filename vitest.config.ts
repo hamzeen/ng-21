@@ -1,15 +1,38 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
-    environment: 'jsdom',
     globals: true,
+
+    environment: 'jsdom',
+
     setupFiles: ['./src/test-setup.ts'],
+
+    include: ['src/**/*.spec.ts'],
+
+    css: true,
+
     coverage: {
-      provider: 'c8',
-      all: true,
-      include: ['src/**/*.ts'],
-      exclude: ['src/main.ts'],
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      reportsDirectory: './coverage',
+      exclude: [
+        'src/main.ts',
+        'src/**/*.routes.ts',
+        'src/**/*.config.ts',
+        'src/environments/**',
+        'src/**/*.mock.ts',
+      ],
+    },
+
+    reporters: ['default'],
+
+    watch: false,
+
+    deps: {
+      inline: [/@angular/],
     },
   },
 });
