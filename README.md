@@ -1,52 +1,41 @@
-# Angular 21: Enterprise Starter
+# AI-Native Angular Starter
 
-A modern Angular 21 starter template for enterprise-grade frontend applications.
+a production-ready Angular starter built around a complete Claude Code workflow — a full three-layer system: an always-on workspace context that enforces modern Angular conventions, slash commands covering the entire dev lifecycle, and specialist agent personas that bring role-specific depth to every stage of development.
+Clone the repo and your team gets the entire AI workflow scaffolding on day one, with no prompting from scratch.
 
-Built with standalone APIs, Signals, `httpResource`, Tailwind CSS, Vitest testing, and AI-assisted development workflows powered by Claude Code templates.
-
-Designed to provide a scalable foundation for modern Angular architecture, frontend engineering practices, and structured AI-assisted development.
+An opinionated Angular starter using standalone APIs, Signals, httpResource, Tailwind CSS, and Vitest. Every choice reflects current Angular best practices — no legacy patterns, no NgModules, no Zone.js.
 
 ---
 
-## ✨ Features
+# 🚀 Getting Started
 
-### Angular 21 Modern APIs
+## Install Dependencies
 
-- Standalone Components
-- Angular Signals
-- `computed()` and `effect()`
-- `input()` / `output()`
-- `inject()`
-- `httpResource()`
-- Route-level lazy loading
-- OnPush change detection
-- Typed Reactive Forms
+```bash
+npm install
+```
 
-### UI & Styling
+## Development Server
 
-- Tailwind CSS integration
-- Responsive layouts
-- Gradient-based modern UI
-- Reusable UI patterns
-- Component-driven structure
+Start the local development server:
 
-### Developer Experience
+```bash
+ng serve
+```
 
-- Hot reload development server
-- AI-assisted development workflows
-- Structured Claude Code commands
-- Role-based agent templates
-- Reusable engineering skills
-- Pre-configured review and audit templates
-- GitHub Actions-ready project structure
+Application runs at:
 
-### Testing
+```txt
+http://localhost:4200
+```
 
-- Unit testing with Vitest
-- Angular Testing Utilities
-- Fast test execution
-- Modern Vite-powered testing workflow
-- Test-first development support through `/tdd`
+### Available Routes
+
+| Route       | Description               |
+| ----------- | ------------------------- |
+| `/`         | Home page                 |
+| `/list`     | Example list view         |
+| `/register` | Registration form example |
 
 ---
 
@@ -136,37 +125,11 @@ Example:
 /ship Run final checks and summarize readiness.
 ```
 
----
+## just need the skills?
 
-# 🚀 Getting Started
-
-## Install Dependencies
-
-```bash
-npm install
+```sh
+npx skills add hamzeen/ng-21/skills/angular-developer
 ```
-
-## Development Server
-
-Start the local development server:
-
-```bash
-ng serve
-```
-
-Application runs at:
-
-```txt
-http://localhost:4200
-```
-
-### Available Routes
-
-| Route       | Description               |
-| ----------- | ------------------------- |
-| `/`         | Home page                 |
-| `/list`     | Example list view         |
-| `/register` | Registration form example |
 
 ---
 
@@ -264,6 +227,18 @@ This is the command that `/ship` should use as the final readiness gate.
 
 ---
 
+# 🏗️ Tech Stack
+
+| Technology     | Purpose                       |
+| -------------- | ----------------------------- |
+| Angular 21     | Frontend framework            |
+| Tailwind CSS   | Utility-first CSS framework   |
+| Vitest         | Vite-native testing framework |
+| GitHub Actions | CI/CD platform                |
+| Claude Code    | AI-assisted workflows         |
+
+---
+
 # 🚀 Deployment
 
 This project is structured to support GitHub Actions-based CI/CD.
@@ -277,18 +252,6 @@ A typical deployment workflow should include:
 5. Deployment
 
 If deployment automation is enabled, every push to the configured branch can trigger the build and deployment pipeline.
-
----
-
-# 🏗️ Tech Stack
-
-| Technology     | Purpose                       |
-| -------------- | ----------------------------- |
-| Angular 21     | Frontend framework            |
-| Tailwind CSS   | Utility-first CSS framework   |
-| Vitest         | Vite-native testing framework |
-| GitHub Actions | CI/CD platform                |
-| Claude Code    | AI-assisted workflows         |
 
 ---
 
@@ -325,6 +288,48 @@ src/app/features/recipes/
 
 ---
 
+## ✨ Features
+
+### Angular 21 Modern APIs
+
+- Standalone Components
+- Angular Signals
+- `computed()` and `effect()`
+- `input()` / `output()`
+- `inject()`
+- `httpResource()`
+- Route-level lazy loading
+- OnPush change detection
+- Typed Reactive Forms
+
+### UI & Styling
+
+- Tailwind CSS integration
+- Responsive layouts
+- Gradient-based modern UI
+- Reusable UI patterns
+- Component-driven structure
+
+### Developer Experience
+
+- Hot reload development server
+- AI-assisted development workflows
+- Structured Claude Code commands
+- Role-based agent templates
+- Reusable engineering skills
+- Pre-configured review and audit templates
+- GitHub Actions-ready project structure
+
+### Testing
+
+- Unit testing with Vitest
+- Angular Testing Utilities
+- Fast test execution
+- Modern Vite-powered testing workflow
+- Test-first development support through `/tdd`
+
+---
+
 # 📚 Goals
 
 This repository explores:
@@ -338,12 +343,8 @@ This repository explores:
 - AI-assisted engineering workflows
 - Repeatable review and release-readiness practices
 
----
+## Philosophy
 
-# 🧭 Project Philosophy
+> Structure over shortcuts — define the spec, plan, test, build, review, ship.
 
-This starter is designed around a simple principle:
-
-> Do not ask AI to jump straight into code. First define the spec, then plan, then test, then build, then review, then ship.
-
-The goal is to make AI-assisted development more structured, reviewable, and aligned with senior engineering practices.
+Designed to make AI-assisted development structured, reviewable, and aligned with senior level engineering practices.
