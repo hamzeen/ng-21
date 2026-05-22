@@ -4,7 +4,7 @@ A modern Angular 21 starter template for enterprise-grade frontend applications.
 
 Built with standalone APIs, Signals, `httpResource`, Tailwind CSS, Vitest testing, and AI-assisted development workflows powered by Claude Code templates.
 
-Designed to provide a scalable foundation for modern Angular architecture and frontend engineering practices.
+Designed to provide a scalable foundation for modern Angular architecture, frontend engineering practices, and structured AI-assisted development.
 
 ---
 
@@ -33,10 +33,12 @@ Designed to provide a scalable foundation for modern Angular architecture and fr
 ### Developer Experience
 
 - Hot reload development server
-- GitHub Actions deployment pipeline
 - AI-assisted development workflows
 - Structured Claude Code commands
+- Role-based agent templates
+- Reusable engineering skills
 - Pre-configured review and audit templates
+- GitHub Actions-ready project structure
 
 ### Testing
 
@@ -44,35 +46,105 @@ Designed to provide a scalable foundation for modern Angular architecture and fr
 - Angular Testing Utilities
 - Fast test execution
 - Modern Vite-powered testing workflow
+- Test-first development support through `/tdd`
 
 ---
 
 # 🤖 Claude Code Template
 
-This repository includes a custom Claude Code setup focused on engineering quality and architectural consistency.
+This repository includes a custom Claude Code setup focused on engineering quality, architectural consistency, and repeatable AI-assisted development workflows.
+
+## Core AI-Assisted Workflow
+
+```txt
+/spec → /plan → /tdd → /build → /review → /ship
+```
+
+Use this workflow when building a new component, page, service, route, store, or feature area.
 
 ## Included Commands
 
-| Command   | Purpose                                                                                |
-| --------- | -------------------------------------------------------------------------------------- |
-| `/review` | Multi-axis code review (correctness, readability, architecture, security, performance) |
-| `/audit`  | General repository quality and architecture inspection                                 |
-| `/test`   | Test execution and validation workflow                                                 |
-| `/build`  | Production build verification                                                          |
-| `/commit` | Structured commit generation workflow                                                  |
+| Command   | Purpose                                                                         |
+| --------- | ------------------------------------------------------------------------------- |
+| `/spec`   | Convert an idea into a clear feature specification before coding                |
+| `/plan`   | Create an implementation plan without writing production code                   |
+| `/tdd`    | Generate failing Vitest tests before implementation                             |
+| `/build`  | Implement the approved plan or verify the production build                      |
+| `/test`   | Run or improve tests                                                            |
+| `/review` | Review correctness, readability, architecture, accessibility, and test coverage |
+| `/audit`  | Run deeper security, performance, and maintainability checks                    |
+| `/a11y`   | Review accessibility-specific concerns                                          |
+| `/serve`  | Start or verify the local development server                                    |
+| `/ship`   | Run final readiness checks before merge                                         |
 
 ## Template Highlights
 
 - Enforces engineering-focused reviews
 - Encourages architectural consistency
 - Promotes performance and security awareness
+- Supports test-first development with Vitest
 - Helps standardize development workflows
 - Designed for Angular-centric frontend projects
 - Optimized for AI-assisted development sessions
 
+## How the AI Workflow Fits Together
+
+```txt
+User prompt
+   ↓
+Claude command
+   ↓
+Specialist agent / role
+   ↓
+Relevant skill or checklist
+   ↓
+Angular code, tests, review output, or ship report
+```
+
+## Recommended Feature Flow
+
+1. Start with `/spec` to define the feature clearly.
+2. Use `/plan` to design the implementation before writing code.
+3. Use `/tdd` to create failing tests first.
+4. Use `/build` to implement the smallest solution that satisfies the spec and tests.
+5. Use `/review` to inspect quality, architecture, and coverage.
+6. Use `/ship` as the final readiness gate before merging.
+
+Example:
+
+```md
+/spec Build a todo component where a user can add, complete, filter, and delete tasks.
+```
+
+```md
+/plan Use Angular 21 signals and Vitest. Do not write production code yet.
+```
+
+```md
+/tdd Write failing tests for initial render, adding a todo, completing a todo, deleting a todo, filtering tasks, and empty state.
+```
+
+```md
+/build Implement the smallest Angular 21 solution to pass the tests.
+```
+
+```md
+/review Review as Angular Specialist, QA Engineer, Senior Developer, and Code Reviewer.
+```
+
+```md
+/ship Run final checks and summarize readiness.
+```
+
 ---
 
 # 🚀 Getting Started
+
+## Install Dependencies
+
+```bash
+npm install
+```
 
 ## Development Server
 
@@ -102,14 +174,25 @@ http://localhost:4200
 
 ## Angular CLI Commands
 
-| Command                                | Description                |
-| -------------------------------------- | -------------------------- |
-| `ng serve`                             | Start development server   |
-| `ng build`                             | Create production build    |
-| `ng test`                              | Run unit tests with Vitest |
-| `ng e2e`                               | Run end-to-end tests       |
-| `ng generate component component-name` | Generate a new component   |
-| `ng generate --help`                   | List available schematics  |
+| Command                                | Description                         |
+| -------------------------------------- | ----------------------------------- |
+| `ng serve`                             | Start development server            |
+| `ng build`                             | Create production build             |
+| `ng test`                              | Run unit tests with Vitest          |
+| `ng e2e`                               | Run end-to-end tests, if configured |
+| `ng generate component component-name` | Generate a new component            |
+| `ng generate --help`                   | List available schematics           |
+
+## Recommended NPM Scripts
+
+| Command             | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `npm start`         | Start the development server                            |
+| `npm run build`     | Create a production build                               |
+| `npm test`          | Run unit tests                                          |
+| `npm run test:run`  | Run tests once in CI-style mode                         |
+| `npm run typecheck` | Run TypeScript checks                                   |
+| `npm run verify`    | Run typecheck, tests, and build as a final quality gate |
 
 ---
 
@@ -122,6 +205,19 @@ Run tests:
 ```bash
 ng test
 ```
+
+Or, if the project includes a dedicated npm script:
+
+```bash
+npm run test:run
+```
+
+Recommended testing approach:
+
+- Prefer user-visible behavior tests.
+- Cover loading, error, empty, and success states where relevant.
+- Avoid testing implementation details unless there is a strong reason.
+- Use `/tdd` before implementation for important behavior.
 
 ---
 
@@ -144,19 +240,43 @@ Production builds include Angular optimization for:
 - Performance
 - Tree shaking
 - Bundle minimization
-- Ahead-of-Time (AOT) compilation
+- Ahead-of-Time compilation
+
+---
+
+# ✅ Verification
+
+For a production-ready change, run the full verification workflow before merging.
+
+Recommended script:
+
+```bash
+npm run verify
+```
+
+A good `verify` script should include:
+
+```txt
+typecheck → tests → production build
+```
+
+This is the command that `/ship` should use as the final readiness gate.
 
 ---
 
 # 🚀 Deployment
 
-Deployment is automated using GitHub Actions.
+This project is structured to support GitHub Actions-based CI/CD.
 
-Every push to `origin` triggers:
+A typical deployment workflow should include:
 
-1. Build pipeline
-2. Test execution
-3. Deployment workflow
+1. Dependency installation
+2. Type checking
+3. Test execution
+4. Production build
+5. Deployment
+
+If deployment automation is enabled, every push to the configured branch can trigger the build and deployment pipeline.
 
 ---
 
@@ -172,6 +292,39 @@ Every push to `origin` triggers:
 
 ---
 
+# 📁 Suggested Feature Structure
+
+For larger features, prefer a feature-first structure:
+
+```txt
+src/app/features/feature-name/
+  components/
+  pages/
+  services/
+  models/
+  feature-name.routes.ts
+```
+
+Example:
+
+```txt
+src/app/features/recipes/
+  components/
+    recipe-card/
+    recipe-search/
+    recipe-tag-filter/
+  pages/
+    recipe-list-page/
+    recipe-detail-page/
+  data/
+    recipes.data.ts
+  models/
+    recipe.model.ts
+  recipes.routes.ts
+```
+
+---
+
 # 📚 Goals
 
 This repository explores:
@@ -181,4 +334,16 @@ This repository explores:
 - Angular-native async patterns
 - Frontend scalability patterns
 - Developer tooling and automation
+- Test-first frontend development
 - AI-assisted engineering workflows
+- Repeatable review and release-readiness practices
+
+---
+
+# 🧭 Project Philosophy
+
+This starter is designed around a simple principle:
+
+> Do not ask AI to jump straight into code. First define the spec, then plan, then test, then build, then review, then ship.
+
+The goal is to make AI-assisted development more structured, reviewable, and aligned with senior engineering practices.
