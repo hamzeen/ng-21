@@ -9,5 +9,5 @@ import { NavbarComponent } from '../shared/layout/navbar/navbar.component';
   styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('ng-21');
+  readonly title = signal('ng-21');
 }
