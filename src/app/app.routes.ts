@@ -4,9 +4,6 @@ import { SignalComputedDemoComponent } from './features/signals-demo/components/
 import { UserRegistrationComponent } from './features/registration/components/user-registration/user-registration.component';
 import { InvoiceListComponent } from './features/invoice-list/components/invoice-list/invoice-list.component';
 import { LoginComponent } from './features/login/components/login/login.component';
-import { RecipesComponent } from './features/recipes/components/recipes/recipes.component';
-import { RecipeListComponent } from './features/recipes/components/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './features/recipes/components/recipe-detail/recipe-detail.component';
 import { authGuard } from './core/guards/auth.guard';
 import { IconDocComponent } from '../shared/ui/icon-preview/icon-doc.component';
 
@@ -47,19 +44,7 @@ export const routes: Routes = [
   },
   {
     path: 'recipes',
-    component: RecipesComponent,
     canActivate: [authGuard],
-    children: [
-      {
-        path: '',
-        component: RecipeListComponent,
-        title: 'Recipes',
-      },
-      {
-        path: ':id',
-        component: RecipeDetailComponent,
-        title: 'Recipe Details',
-      },
-    ],
+    loadChildren: () => import('./features/recipes/recipes.routes').then((m) => m.RECIPES_ROUTES),
   },
 ];
