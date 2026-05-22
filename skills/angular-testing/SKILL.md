@@ -9,6 +9,10 @@ description: Write unit tests for Angular 21 components and services using Vites
 
 Write comprehensive unit tests for Angular components and services using Vitest and TestBed. Test behavior, not implementation details. Use signals by reading their values directly.
 
+For framework-level Angular testing guidance, consult `skills/angular-developer/SKILL.md` first.
+
+This skill focuses on this repository’s Vitest setup, TestBed usage, and AI-assisted TDD workflow.
+
 ## When to Use
 
 - Writing unit tests for new components or services

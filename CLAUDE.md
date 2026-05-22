@@ -2,6 +2,13 @@
 
 This file contains Angular-specific instructions and best practices for Claude AI when working in this workspace.
 
+For framework-level Angular guidance, consult `skills/angular-developer/SKILL.md` first.
+
+For this repository’s AI-assisted workflow, follow:
+
+````txt
+/spec → /plan → /tdd → /build → /review → /ship
+
 ## Project Context
 
 - **Framework**: Angular 21 (Latest)
@@ -49,7 +56,7 @@ export class MyComponent {
   // Use computed for derived state
   doubled = computed(() => this.counter() * 2);
 }
-```
+````
 
 #### Template Guidelines
 

@@ -20,6 +20,7 @@ OpenCode uses a **skill-driven execution model** powered by the `skill` tool and
 ### Intent → Skill Mapping
 
 The agent should automatically map user intent to skills:
+For framework-level Angular guidance, consult `skills/angular-developer/SKILL.md` first.
 
 - Feature / new functionality → `spec-driven-development`, then `incremental-implementation`, `test-driven-development`
 - Planning / breakdown → `planning-and-task-breakdown`

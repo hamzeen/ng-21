@@ -7,7 +7,11 @@ description: Build Angular 21 standalone components with input/output functions,
 
 ## Overview
 
-Build standalone Angular 21 components using modern patterns: input/output functions, signals for state, computed values for derived state, and OnPush change detection for optimal performance.
+Build standalone Angular 21 components using modern patterns: `input()` / `output()`, signals for local state, `computed()` for derived state, and OnPush change detection for optimal performance.
+
+For framework-level Angular guidance, consult `skills/angular-developer/SKILL.md` first.
+
+This skill focuses on this repository’s component implementation patterns and Angular 21 conventions.
 
 ## When to Use
 
