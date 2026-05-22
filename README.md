@@ -1,4 +1,4 @@
-# Samples: Angular 21
+# Angular 21: Enterprise Starter
 
 A modern Angular 21 starter template for enterprise-grade frontend applications.
 
