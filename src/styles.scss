@@ -1,3 +1,12 @@
 @use './design-system/tokens/colors' as *;
 @use './design-system/tokens/typography' as *;
 @use './design-system/tokens/spacing' as *;
+
+html,
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

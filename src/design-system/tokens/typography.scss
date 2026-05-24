@@ -1,6 +1,14 @@
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/manrope/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   // ── Font Families ─────────────────────────
-  --font-primary: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-primary: 'Manrope', 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: 'Courier New', Courier, monospace;
 
   // ── Font Sizes ───────────────────────────

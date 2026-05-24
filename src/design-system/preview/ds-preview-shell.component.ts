@@ -31,7 +31,7 @@ import { DS_PREVIEW_MANIFEST, DsPreviewItem } from './ds-preview.manifest';
       .ds-shell {
         display: flex;
         height: 100vh;
-        font-family: 'Helvetica Neue', sans-serif;
+        font-family: 'Manrope', 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
       .ds-sidebar {
         width: 220px;
