@@ -27,4 +27,11 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     group: 'Visual Language',
     loadComponent: () => import('./pages/icon-preview.component').then((m) => m.IconDocComponent),
   },
+  {
+    path: 'typography',
+    label: 'Typography',
+    group: 'Visual Language',
+    loadComponent: () =>
+      import('./pages/typography-preview.component').then((m) => m.TypographyPreviewComponent),
+  },
 ];
