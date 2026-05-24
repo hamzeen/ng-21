@@ -7,8 +7,9 @@ import {
   ChangeDetectorRef,
   ElementRef,
   AfterViewInit,
+  TemplateRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { finalize } from 'rxjs';
 import { DialogConfig, AsyncState } from './dialog.types';
 import { DialogRef } from './dialog-ref';
@@ -17,7 +18,7 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
 @Component({
   selector: 'ds-dialog',
   standalone: true,
-  imports: [CommonModule, BusyButtonComponent],
+  imports: [CommonModule, NgTemplateOutlet, BusyButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div
@@ -36,12 +37,21 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
       >
         <!-- ── Header ───────────────────────────── -->
         <div class="ds-dialog__header">
-          <ng-content select="[dsDialogHeader]">
+          <!-- template header -->
+          <ng-container *ngIf="config.headerTemplate; else stringHeader">
+            <div class="ds-dialog__header-content">
+              <ng-container *ngTemplateOutlet="config.headerTemplate" />
+            </div>
+          </ng-container>
+
+          <!-- string header -->
+          <ng-template #stringHeader>
             <span *ngIf="config.title" id="ds-dialog-title" class="ds-dialog__title">
               {{ config.title }}
             </span>
-          </ng-content>
+          </ng-template>
 
+          <!-- close button -->
           <button
             *ngIf="showClose"
             class="ds-dialog__close"
@@ -62,15 +72,21 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
         <!-- ── Body ─────────────────────────────── -->
         <ng-container *ngIf="hasBody">
           <div class="ds-dialog__body">
-            <ng-content select="[dsDialogBody]">
+            <!-- template body -->
+            <ng-container *ngIf="config.bodyTemplate; else stringBody">
+              <ng-container *ngTemplateOutlet="config.bodyTemplate" />
+            </ng-container>
+
+            <!-- string body -->
+            <ng-template #stringBody>
               <p *ngIf="config.body" class="ds-dialog__body-text">
                 {{ config.body }}
               </p>
-            </ng-content>
+            </ng-template>
           </div>
         </ng-container>
 
-        <!-- ── Footer: async confirm ────────────── -->
+        <!-- ── Footer: confirm API ───────────────── -->
         <ng-container *ngIf="isConfirmDialog">
           <div class="ds-dialog__footer">
             <div class="ds-dialog__footer-actions">
@@ -81,7 +97,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
               >
                 {{ config.cancelLabel ?? 'Cancel' }}
               </button>
-
               <app-busy-button
                 [label]="config.confirmLabel ?? 'Confirm'"
                 loadingLabel="Working..."
@@ -96,14 +111,20 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
           </div>
         </ng-container>
 
-        <!-- ── Footer: string/slot ───────────────── -->
+        <!-- ── Footer: template or string ───────── -->
         <ng-container *ngIf="hasFooter">
           <div class="ds-dialog__footer">
-            <ng-content select="[dsDialogFooter]">
+            <!-- template footer -->
+            <ng-container *ngIf="config.footerTemplate; else stringFooter">
+              <ng-container *ngTemplateOutlet="config.footerTemplate" />
+            </ng-container>
+
+            <!-- string footer -->
+            <ng-template #stringFooter>
               <p *ngIf="config.footer" class="ds-dialog__footer-text">
                 {{ config.footer }}
               </p>
-            </ng-content>
+            </ng-template>
           </div>
         </ng-container>
       </div>
@@ -171,6 +192,10 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
         gap: 16px;
       }
 
+      .ds-dialog__header-content {
+        flex: 1;
+      }
+
       .ds-dialog__title {
         font-size: 18px;
         font-weight: 600;
@@ -194,7 +219,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
         transition:
           background 0.15s,
           color 0.15s;
-
         &:hover {
           background: #f7f7f7;
           color: #222;
@@ -204,7 +228,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
       .ds-dialog__body {
         padding: 16px 24px;
       }
-
       .ds-dialog__body-text {
         font-size: 14px;
         color: #484848;
@@ -220,13 +243,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
       .ds-dialog__footer-text {
         font-size: 13px;
         color: #767676;
-        text-align: right;
-      }
-
-      /* ── Confirm footer ────────────────────── */
-      .ds-dialog__footer-status {
-        min-height: 20px;
-        margin-bottom: 12px;
       }
 
       .ds-dialog__footer-actions {
@@ -234,24 +250,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
-      }
-
-      .ds-dialog__status-text {
-        font-size: 13px;
-        color: #767676;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-
-        &.visible {
-          opacity: 1;
-        }
-        &--success {
-          color: #008a05;
-          font-weight: 600;
-        }
-        &--error {
-          color: #c13515;
-        }
       }
 
       .ds-dialog__cancel-btn {
@@ -267,7 +265,6 @@ import { BusyButtonComponent } from '@design-system/components/busy-button';
         transition:
           background 0.15s,
           border-color 0.15s;
-
         &:hover:not(:disabled) {
           background: #f7f7f7;
           border-color: #aaa;
@@ -293,17 +290,16 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   get showClose(): boolean {
     return this.config.showClose ?? true;
   }
+  get isConfirmDialog(): boolean {
+    return !!this.config.onConfirm;
+  }
 
   get hasBody(): boolean {
-    return !!this.config.body;
+    return !!(this.config.body || this.config.bodyTemplate);
   }
 
   get hasFooter(): boolean {
-    return !!this.config.footer && !this.isConfirmDialog;
-  }
-
-  get isConfirmDialog(): boolean {
-    return !!this.config.onConfirm;
+    return !this.isConfirmDialog && !!(this.config.footer || this.config.footerTemplate);
   }
 
   get dialogClasses(): string {
@@ -337,9 +333,7 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onEscapeKey(): void {
-    if ((this.config.closeStrategy ?? 'backdrop') === 'backdrop') {
-      this.close();
-    }
+    if ((this.config.closeStrategy ?? 'backdrop') === 'backdrop') this.close();
   }
 
   onConfirmClick(): void {
@@ -354,8 +348,8 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe({
         next: () => {
           this.asyncState = 'success';
-          this.cdr.markForCheck();
           setTimeout(() => this.close(), 1000);
+          this.cdr.markForCheck();
         },
         error: () => {
           this.asyncState = 'error';
@@ -365,20 +359,15 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setupFocusTrap(dialogEl: HTMLElement): void {
-    const focusable = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-
+    const focusable = 'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])';
     this.focusTrapHandler = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
-
-      const focusableEls = Array.from(dialogEl.querySelectorAll<HTMLElement>(focusable)).filter(
+      const els = Array.from(dialogEl.querySelectorAll<HTMLElement>(focusable)).filter(
         (el) => !el.hasAttribute('disabled'),
       );
-
-      if (!focusableEls.length) return;
-
-      const first = focusableEls[0];
-      const last = focusableEls[focusableEls.length - 1];
-
+      if (!els.length) return;
+      const first = els[0],
+        last = els[els.length - 1];
       if (e.shiftKey) {
         if (document.activeElement === first) {
           e.preventDefault();
@@ -391,7 +380,6 @@ export class DialogComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     };
-
     document.addEventListener('keydown', this.focusTrapHandler);
   }
 }
