@@ -11,7 +11,9 @@ import { TimelineIcon, TimelineItem } from './timeline.types';
       @if (heading()) {
         <header class="mb-8">
           @if (eyebrow()) {
-            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-primary)]">
+            <p
+              class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-primary)]"
+            >
               {{ eyebrow() }}
             </p>
           }
@@ -41,7 +43,7 @@ import { TimelineIcon, TimelineItem } from './timeline.types';
             }
 
             <div
-              class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border-default)] bg-[var(--color-bg-base)] text-[var(--color-text-secondary)] shadow-sm sm:h-12 sm:w-12"
+              class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border-default)] bg-[var(--color-bg-base)] text-[var(--color-text-link)] shadow-sm sm:h-12 sm:w-12"
             >
               @switch (item.icon ?? fallbackIcon(index)) {
                 @case ('mail') {
