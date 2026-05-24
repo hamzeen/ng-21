@@ -13,7 +13,13 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     loadComponent: () =>
       import('./pages/busy-button-preview.component').then((m) => m.BusyButtonPreviewComponent),
   },
-
+  {
+    path: 'dialog',
+    label: 'Dialog',
+    group: 'Components',
+    loadComponent: () =>
+      import('./pages/dialog-preview.component').then((m) => m.DialogPreviewComponent),
+  },
   {
     path: 'colors',
     label: 'Colors',
