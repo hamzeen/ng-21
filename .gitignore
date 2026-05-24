@@ -10,6 +10,13 @@
 npm-debug.log
 yarn-error.log
 
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+
+
 # IDEs and editors
 .idea/
 .project
