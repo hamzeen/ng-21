@@ -47,4 +47,9 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadChildren: () => import('./features/recipes/recipes.routes').then((m) => m.RECIPES_ROUTES),
   },
+  {
+    path: 'ds',
+    loadChildren: () =>
+      import('../design-system/preview/ds-preview.routes').then((m) => m.DS_PREVIEW_ROUTES),
+  },
 ];

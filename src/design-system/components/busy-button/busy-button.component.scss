@@ -1,0 +1,193 @@
+// ─── Design Tokens (Airbnb-inspired) ─────────────────────────────────────────
+
+:host {
+  // Brand
+  --btn-color-primary:        #FF385C;
+  --btn-color-primary-hover:  #E0294B;
+  --btn-color-primary-active: #C8213E;
+
+  --btn-color-secondary-bg:       #FFFFFF;
+  --btn-color-secondary-border:   #DDDDDD;
+  --btn-color-secondary-text:     #222222;
+  --btn-color-secondary-hover-bg: #F7F7F7;
+
+  --btn-color-danger:        #C13515;
+  --btn-color-danger-hover:  #A82C10;
+
+  --btn-color-disabled-bg:   #EBEBEB;
+  --btn-color-disabled-text: #BBBBBB;
+
+  // Shape
+  --btn-radius-pill: 9999px;
+  --btn-radius-md:   12px;
+
+  // Typography
+  --btn-font-family:  'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --btn-font-weight:  600;
+
+  // Transition
+  --btn-transition: background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+
+  display: inline-flex;
+
+  &.full-width {
+    display: flex;
+    width: 100%;
+  }
+}
+
+// ─── Base Button ──────────────────────────────────────────────────────────────
+
+.busy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--btn-font-family);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: -0.01em;
+  transition: var(--btn-transition);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  width: 100%;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(#FF385C, 0.3);
+  }
+
+  // ─── Sizes ──────────────────────────────────────────────────────────────────
+
+  &.size-sm {
+    padding: 10px 18px;
+    font-size: 13px;
+    border-radius: var(--btn-radius-pill);
+    min-height: 36px;
+    min-width: 100px;
+  }
+
+  &.size-md {
+    padding: 13px 24px;
+    font-size: 15px;
+    border-radius: var(--btn-radius-pill);
+    min-height: 48px;
+    min-width: 130px;
+  }
+
+  &.size-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: var(--btn-radius-pill);
+    min-height: 56px;
+    min-width: 160px;
+  }
+
+  // ─── Variants ───────────────────────────────────────────────────────────────
+
+  &.variant-primary {
+    background: var(--btn-color-primary);
+    background: linear-gradient(to bottom right, #FF385C, #E31C5F);
+    color: #FFFFFF;
+    border: none;
+
+    &:hover:not(.is-disabled) {
+      background: var(--btn-color-primary-hover);
+      background: linear-gradient(to bottom right, #E0294B, #C8215A);
+      box-shadow: 0 4px 16px rgba(#FF385C, 0.35);
+    }
+
+    &:active:not(.is-disabled) {
+      background: var(--btn-color-primary-active);
+      box-shadow: none;
+      transform: scale(0.985);
+    }
+  }
+
+  &.variant-secondary {
+    background: var(--btn-color-secondary-bg);
+    color: var(--btn-color-secondary-text);
+    border: 1.5px solid var(--btn-color-secondary-border);
+
+    &:hover:not(.is-disabled) {
+      background: var(--btn-color-secondary-hover-bg);
+      border-color: #AAAAAA;
+    }
+
+    &:active:not(.is-disabled) {
+      transform: scale(0.985);
+    }
+  }
+
+  &.variant-danger {
+    background: var(--btn-color-danger);
+    color: #FFFFFF;
+    border: none;
+
+    &:hover:not(.is-disabled) {
+      background: var(--btn-color-danger-hover);
+      box-shadow: 0 4px 16px rgba(#C13515, 0.3);
+    }
+
+    &:active:not(.is-disabled) {
+      transform: scale(0.985);
+    }
+  }
+
+  // ─── Disabled / Loading ──────────────────────────────────────────────────────
+
+  &.is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--btn-color-disabled-bg) !important;
+    color: var(--btn-color-disabled-text) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  &.is-loading {
+    cursor: wait;
+  }
+}
+
+// ─── Inner Layout ─────────────────────────────────────────────────────────────
+
+.busy-btn__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+// ─── Label ────────────────────────────────────────────────────────────────────
+
+.busy-btn__label {
+  display: inline-block;
+  line-height: 1;
+}
+
+// ─── Spinner ──────────────────────────────────────────────────────────────────
+
+.busy-btn__spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    animation: busy-spin 0.8s linear infinite;
+
+    .size-sm & { width: 14px; height: 14px; }
+    .size-md & { width: 16px; height: 16px; }
+    .size-lg & { width: 18px; height: 18px; }
+  }
+}
+
+@keyframes busy-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

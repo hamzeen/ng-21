@@ -1,0 +1,47 @@
+:root {
+  // ── Brand ────────────────────────────────
+  --color-primary: #ff385c;
+  --color-primary-hover: #e0294b;
+  --color-primary-active: #c8213e;
+  --color-primary-subtle: #fff0f3;
+
+  // ── Secondary ────────────────────────────
+  --color-secondary: #00a699;
+  --color-secondary-hover: #008f83;
+  --color-secondary-subtle: #e6f7f6;
+
+  // ── Neutrals ─────────────────────────────
+  --color-gray-900: #222222;
+  --color-gray-700: #484848;
+  --color-gray-500: #767676;
+  --color-gray-300: #dddddd;
+  --color-gray-100: #f7f7f7;
+  --color-white: #ffffff;
+
+  // ── Semantic ─────────────────────────────
+  --color-success: #008a05;
+  --color-success-subtle: #edfaee;
+  --color-warning: #c47d02;
+  --color-warning-subtle: #fef7e6;
+  --color-danger: #c13515;
+  --color-danger-subtle: #fceee9;
+  --color-info: #0066cc;
+  --color-info-subtle: #e6f0fa;
+
+  // ── Text ─────────────────────────────────
+  --color-text-primary: #222222;
+  --color-text-secondary: #484848;
+  --color-text-muted: #767676;
+  --color-text-inverse: #ffffff;
+  --color-text-link: #ff385c;
+
+  // ── Background ───────────────────────────
+  --color-bg-base: #ffffff;
+  --color-bg-subtle: #f7f7f7;
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  // ── Border ───────────────────────────────
+  --color-border-default: #dddddd;
+  --color-border-strong: #aaaaaa;
+  --color-border-focus: #222222;
+}

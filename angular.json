@@ -24,7 +24,14 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              {
+                "input": "node_modules/tailwindcss/index.css",
+                "inject": true,
+                "bundleName": "tailwind"
+              },
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
