@@ -207,6 +207,58 @@ Production builds include Angular optimization for:
 
 ---
 
+# 🐳 Local Infrastructure (Docker + Terraform)
+
+This project uses Terraform to provision a local Docker container to serve the Angular app via Nginx.
+
+### Prerequisites
+
+- [OrbStack](https://orbstack.dev/) or Docker Desktop
+- [Terraform](https://developer.hashicorp.com/terraform/install)
+
+### Setup
+
+**1. Build the Docker image**
+
+```bash
+docker build -t angular-app .
+```
+
+**2. Initialize Terraform**
+
+```bash
+cd terraform
+terraform init
+```
+
+**3. Start the app**
+
+```bash
+terraform apply
+```
+
+Visit **http://localhost:4200** to see the app running.
+
+### Useful Commands
+
+| Command             | Description                   |
+| ------------------- | ----------------------------- |
+| `terraform apply`   | Start the container           |
+| `terraform plan`    | Preview changes               |
+| `terraform destroy` | Stop and remove the container |
+
+### Infrastructure Overview
+
+```
+Terraform (IaC)
+     │
+     ▼
+Docker Provider
+     │
+     ├── docker_image   → angular-app:latest
+     └── docker_container → Nginx serving Angular (port 4200)
+```
+
 # ✅ Verification
 
 For a production-ready change, run the full verification workflow before merging.
