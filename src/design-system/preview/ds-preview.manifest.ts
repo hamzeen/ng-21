@@ -7,11 +7,25 @@ export interface DsPreviewItem {
 
 export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
   {
+    path: 'button',
+    label: 'Button',
+    group: 'Form Controls',
+    loadComponent: () =>
+      import('./pages/button-preview.component').then((m) => m.ButtonPreviewComponent),
+  },
+  {
     path: 'busy-button',
     label: 'Busy Button',
     group: 'Form Controls',
     loadComponent: () =>
       import('./pages/busy-button-preview.component').then((m) => m.BusyButtonPreviewComponent),
+  },
+  {
+    path: 'card',
+    label: 'Card',
+    group: 'Components',
+    loadComponent: () =>
+      import('./pages/card-preview.component').then((m) => m.CardPreviewComponent),
   },
   {
     path: 'dialog',
