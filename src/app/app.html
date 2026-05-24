@@ -1,11 +1,19 @@
-<div class="flex min-h-screen">
+<!--<div class="flex min-h-screen">
   @if (!isDesignSystemRoute()) {
-    <!-- App Sidebar -->
     <aside class="flex-none">
       <app-navbar></app-navbar>
     </aside>
   }
-  <!-- Page Content -->
+  <main class="min-w-0 flex-1 overflow-auto bg-blue-50">
+    <router-outlet></router-outlet>
+  </main>
+</div>//-->
+
+<div class="flex min-h-screen">
+  @if (!isDesignSystemRoute()) {
+    <app-navbar></app-navbar>
+  }
+
   <main class="min-w-0 flex-1 overflow-auto bg-blue-50">
     <router-outlet></router-outlet>
   </main>
