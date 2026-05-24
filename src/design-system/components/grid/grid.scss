@@ -1,0 +1,125 @@
+// ─── Container ────────────────────────────────────────────────────────────────
+
+.ds-container {
+  width: 100%;
+  max-width: var(--grid-max-width);
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--grid-margin-md);
+  }
+  @media (min-width: 1024px) {
+    padding-inline: var(--grid-margin-lg);
+  }
+}
+
+// ─── Grid ─────────────────────────────────────────────────────────────────────
+
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+
+  @media (min-width: 768px) {
+    gap: var(--grid-gutter-md);
+  }
+}
+
+// ─── Columns — base (mobile first) ───────────────────────────────────────────
+
+@for $i from 1 through 12 {
+  .ds-col-#{$i} {
+    grid-column: span #{$i} / span #{$i};
+  }
+}
+
+.ds-col-auto {
+  grid-column: auto;
+}
+.ds-col-full {
+  grid-column: 1 / -1;
+}
+
+// ─── Offsets — base ───────────────────────────────────────────────────────────
+
+@for $i from 1 through 11 {
+  .ds-col-offset-#{$i} {
+    grid-column-start: #{$i + 1};
+  }
+}
+
+// ─── Responsive — sm (640px) ──────────────────────────────────────────────────
+
+@media (min-width: 640px) {
+  @for $i from 1 through 12 {
+    .sm\:ds-col-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 11 {
+    .sm\:ds-col-offset-#{$i} {
+      grid-column-start: #{$i + 1};
+    }
+  }
+}
+
+// ─── Responsive — md (768px) ──────────────────────────────────────────────────
+
+@media (min-width: 768px) {
+  @for $i from 1 through 12 {
+    .md\:ds-col-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 11 {
+    .md\:ds-col-offset-#{$i} {
+      grid-column-start: #{$i + 1};
+    }
+  }
+}
+
+// ─── Responsive — lg (1024px) ─────────────────────────────────────────────────
+
+@media (min-width: 1024px) {
+  @for $i from 1 through 12 {
+    .lg\:ds-col-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 11 {
+    .lg\:ds-col-offset-#{$i} {
+      grid-column-start: #{$i + 1};
+    }
+  }
+}
+
+// ─── Responsive — xl (1280px) ─────────────────────────────────────────────────
+
+@media (min-width: 1280px) {
+  @for $i from 1 through 12 {
+    .xl\:ds-col-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 11 {
+    .xl\:ds-col-offset-#{$i} {
+      grid-column-start: #{$i + 1};
+    }
+  }
+}
+
+// ─── Responsive — 2xl (1536px) ────────────────────────────────────────────────
+
+@media (min-width: 1536px) {
+  @for $i from 1 through 12 {
+    .\32xl\:ds-col-#{$i} {
+      grid-column: span #{$i} / span #{$i};
+    }
+  }
+  @for $i from 1 through 11 {
+    .\32xl\:ds-col-offset-#{$i} {
+      grid-column-start: #{$i + 1};
+    }
+  }
+}

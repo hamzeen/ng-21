@@ -1,6 +1,8 @@
 @use './design-system/tokens/colors' as *;
 @use './design-system/tokens/typography' as *;
 @use './design-system/tokens/spacing' as *;
+@use './design-system/tokens/grid' as *;
+@use './design-system/components/grid/grid' as *;
 
 html,
 body {

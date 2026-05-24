@@ -28,6 +28,13 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
       import('./pages/card-preview.component').then((m) => m.CardPreviewComponent),
   },
   {
+    path: 'timeline',
+    label: 'Timeline',
+    group: 'Components',
+    loadComponent: () =>
+      import('./pages/timeline-preview.component').then((m) => m.TimelinePreviewComponent),
+  },
+  {
     path: 'dialog',
     label: 'Dialog',
     group: 'Components',
@@ -53,5 +60,12 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     group: 'Visual Language',
     loadComponent: () =>
       import('./pages/typography-preview.component').then((m) => m.TypographyPreviewComponent),
+  },
+  {
+    path: 'grid',
+    label: 'Grid',
+    group: 'Visual Language',
+    loadComponent: () =>
+      import('./pages/grid-preview.component').then((m) => m.GridPreviewComponent),
   },
 ];
