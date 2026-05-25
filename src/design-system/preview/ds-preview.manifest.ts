@@ -21,6 +21,13 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
       import('./pages/busy-button-preview.component').then((m) => m.BusyButtonPreviewComponent),
   },
   {
+    path: 'toast',
+    label: 'Toast',
+    group: 'Components',
+    loadComponent: () =>
+      import('./pages/toast-preview.component').then((m) => m.ToastPreviewComponent),
+  },
+  {
     path: 'card',
     label: 'Card',
     group: 'Components',
