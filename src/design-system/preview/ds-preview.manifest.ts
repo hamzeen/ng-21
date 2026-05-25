@@ -75,4 +75,14 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     loadComponent: () =>
       import('./pages/grid-preview.component').then((m) => m.GridPreviewComponent),
   },
+
+  {
+    path: 'host-highlights',
+    label: 'Host Highlights',
+    group: 'Organisms',
+    loadComponent: () =>
+      import('./pages/host-highlights-preview.component').then(
+        (m) => m.HostHighlightsPreviewComponent,
+      ),
+  },
 ];
