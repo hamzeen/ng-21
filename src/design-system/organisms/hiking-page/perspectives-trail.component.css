@@ -1,5 +1,6 @@
 .perspectives-trail-page {
   --page-shell-padding: 2.5rem;
+  --page-content-padding: 24px;
 
   /* Cancels preview shell padding so this full-page organism owns its background */
   min-height: calc(100vh + var(--page-shell-padding));
@@ -100,7 +101,7 @@
   max-width: 1120px;
   min-width: 0;
   margin: 0 auto;
-  padding: 0 24px 80px;
+  padding: 0 var(--page-content-padding, 24px) 80px;
 }
 
 .content-grid {
@@ -789,17 +790,18 @@
 
 @media (max-width: 640px) {
   .perspectives-trail-page {
-    --page-shell-padding: 0rem;
+    --page-shell-padding: 2.5rem;
+    --page-content-padding: 16px;
 
-    min-height: 100vh;
-    margin: 0;
+    min-height: calc(100vh + var(--page-shell-padding));
+    margin: calc(var(--page-shell-padding) * -1);
     padding: 0;
   }
 
   .page {
     max-width: none;
     width: 100%;
-    padding: 0 0 80px;
+    padding: 0 var(--page-content-padding) 80px;
   }
 
   .gallery {
