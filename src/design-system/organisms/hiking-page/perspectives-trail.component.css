@@ -9,18 +9,8 @@
 
   min-width: 0;
   overflow-x: clip;
-  font-family: 'DM Sans', sans-serif;
   color: var(--text-primary);
   background: var(--white);
-  -webkit-font-smoothing: antialiased;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 .perspectives-trail-page {
@@ -318,59 +308,6 @@
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.5;
-}
-
-/* ── Trail Details Grid ─────────────────────────── */
-.details-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.detail-card {
-  background: var(--bg-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.detail-card__icon {
-  width: 44px;
-  height: 44px;
-  background: var(--white);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
-}
-
-.detail-card__icon svg {
-  width: 22px;
-  height: 22px;
-  stroke: var(--brand);
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.detail-card__label {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.detail-card__value {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
 }
 
 /* ── Photo row ──────────────────────────────────── */
