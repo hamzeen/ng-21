@@ -85,4 +85,11 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
         (m) => m.HostHighlightsPreviewComponent,
       ),
   },
+  {
+    path: 'perspectives-trail',
+    label: 'Perspectives Trail',
+    group: 'Organisms',
+    loadComponent: () =>
+      import('../organisms/hiking-page').then((m) => m.PerspectivesTrailComponent),
+  },
 ];
