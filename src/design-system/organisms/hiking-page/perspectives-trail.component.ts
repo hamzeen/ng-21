@@ -1,10 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+  HostHighlightsComponent,
+  HostHighlightItem,
+} from '@design-system/organisms/host-highlights';
 
 @Component({
   selector: 'app-perspectives-trail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HostHighlightsComponent],
   template: `
     <div class="page">
       <!-- ── Gallery ─────────────────────────────────── -->
@@ -83,76 +87,15 @@ import { Component } from '@angular/core';
             </div>
           </div>
 
-          <!-- Host -->
-          <div class="host-row">
-            <img
-              class="host-avatar"
-              src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100&q=80"
-              alt="Guide Markus"
-            />
-            <div class="host-info">
-              <div class="host-info__name">Guided by Markus Alpenführer</div>
-              <div class="host-info__meta">Certified mountain guide · 6 years experience</div>
-            </div>
-            <div class="superhost-badge">🏆 Superguide</div>
-          </div>
-
-          <!-- Highlights -->
+          <!-- Host Highlights -->
           <div class="section">
-            <div class="highlights">
-              <div class="highlight-item">
-                <div class="highlight-item__icon">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div class="highlight-item__content">
-                  <div class="highlight-item__content__title">Breathtaking 360° panorama</div>
-                  <div class="highlight-item__content__desc">
-                    Stand above the clouds with views of over 90 Alpine peaks, stretching from the
-                    Zugspitze to the Dolomites on clear days.
-                  </div>
-                </div>
-              </div>
-
-              <div class="highlight-item">
-                <div class="highlight-item__icon">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                    />
-                  </svg>
-                </div>
-                <div class="highlight-item__content">
-                  <div class="highlight-item__content__title">Expert local guidance included</div>
-                  <div class="highlight-item__content__desc">
-                    Your certified Alpenführer knows every boulder and wildflower. Safety briefing,
-                    gear check and cultural storytelling along the way.
-                  </div>
-                </div>
-              </div>
-
-              <div class="highlight-item">
-                <div class="highlight-item__icon">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.02 12.02l.707.707M1 12h1m20 0h1M4.22 19.78l.707-.707M18.95 5.05l.707-.707"
-                    />
-                    <circle cx="12" cy="12" r="4" />
-                  </svg>
-                </div>
-                <div class="highlight-item__content">
-                  <div class="highlight-item__content__title">Golden hour summit experience</div>
-                  <div class="highlight-item__content__desc">
-                    Timed to reach the Hafelekar peak at dusk — the Alpenglow turns the limestone
-                    cliffs a deep amber and rose.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Replace host-row div + highlights section with: -->
+            <ds-host-highlights
+              hostName="Markus Alpenführer"
+              meta="Certified mountain guide · 6 years experience"
+              avatarUrl="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=100&q=80"
+              [items]="highlights"
+            />
           </div>
 
           <!-- Description -->
@@ -418,7 +361,9 @@ import { Component } from '@angular/core';
 
             <!-- Rare find -->
             <div class="rare-find">
-              <div class="rare-find__icon">💎</div>
+              <div class="rare-find__icon">
+                <i class="fa-solid fa-fire-flame-curved text-lg"></i>
+              </div>
               <div>
                 <div class="rare-find__title">Rare find!</div>
                 <div class="rare-find__desc">
@@ -510,7 +455,7 @@ import { Component } from '@angular/core';
         display: block;
         font-family: 'DM Sans', sans-serif;
         color: var(--text-primary);
-        background: var(--white);
+        background: #ffffff;
         -webkit-font-smoothing: antialiased;
       }
 
@@ -523,7 +468,16 @@ import { Component } from '@angular/core';
         max-height: 680px;
         overflow: hidden;
         border-radius: var(--radius-lg);
-        position: relative;
+
+        @media (max-width: 640px) {
+          grid-template-columns: 1fr;
+          grid-template-rows: 280px;
+          max-height: 280px;
+
+          .gallery__cell:not(.gallery__main) {
+            display: none;
+          }
+        }
       }
 
       .gallery__main {
@@ -574,7 +528,7 @@ import { Component } from '@angular/core';
       .page {
         max-width: 1120px;
         margin: 0 auto;
-        padding: 0 24px 80px;
+        padding: 0 0 80px;
       }
 
       .content-grid {
@@ -583,6 +537,12 @@ import { Component } from '@angular/core';
         gap: 80px;
         align-items: start;
         margin-top: 48px;
+
+        // ← collapse to single column on smaller screens
+        @media (max-width: 900px) {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
       }
 
       /* ── Header ────────────────────────────────────── */
@@ -1219,4 +1179,25 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class PerspectivesTrailComponent {}
+export class PerspectivesTrailComponent {
+  highlights: HostHighlightItem[] = [
+    {
+      icon: 'fa-solid fa-mountain',
+      title: 'Breathtaking 360° panorama',
+      description:
+        'Stand above the clouds with views of over 90 Alpine peaks, stretching from the Zugspitze to the Dolomites on clear days.',
+    },
+    {
+      icon: 'fa-solid fa-map',
+      title: 'Expert local guidance included',
+      description:
+        'Your certified Alpenführer knows every boulder and wildflower. Safety briefing, gear check and cultural storytelling along the way.',
+    },
+    {
+      icon: 'fa-solid fa-sun',
+      title: 'Golden hour summit experience',
+      description:
+        'Timed to reach the Hafelekar peak at dusk — the Alpenglow turns the limestone cliffs a deep amber and rose.',
+    },
+  ];
+}
