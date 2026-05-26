@@ -237,7 +237,6 @@ import { Component } from '@angular/core';
       }
 
       .tokens-card {
-        border-radius: var(--ds-radius-lg);
         background: var(--ds-color-surface);
       }
 
