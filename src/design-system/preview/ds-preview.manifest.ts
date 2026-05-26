@@ -75,6 +75,13 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     loadComponent: () =>
       import('./pages/grid-preview.component').then((m) => m.GridPreviewComponent),
   },
+  {
+    path: 'design-tokens',
+    label: 'Design Tokens',
+    group: 'Visual Language',
+    loadComponent: () =>
+      import('./pages/design-tokens-preview.component').then((m) => m.DesignTokensPreviewComponent),
+  },
 
   {
     path: 'host-highlights',
