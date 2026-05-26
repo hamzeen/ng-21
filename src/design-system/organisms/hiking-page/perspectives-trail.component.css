@@ -119,12 +119,10 @@
 }
 
 .listing-title {
-  font-family: 'Lora', serif;
   font-size: 28px;
   font-weight: 600;
   line-height: 1.25;
   margin-bottom: 8px;
-  color: var(--text-primary);
 }
 
 .listing-meta {
@@ -245,11 +243,9 @@
 }
 
 .section__title {
-  font-family: 'Lora', serif;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 16px;
-  color: var(--text-primary);
 }
 
 .description {

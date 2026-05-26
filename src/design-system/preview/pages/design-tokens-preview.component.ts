@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="design-tokens-preview">
       <header class="tokens-hero">
-        <p class="tokens-eyebrow">Visual Language</p>
+        <p class="tokens-eyebrow ">Visual Language</p>
         <h1 class="tokens-title">Design Tokens</h1>
         <p class="tokens-desc">
           A small reusable layer extracted from the Perspectives Trail page. The goal is not to
@@ -185,7 +185,7 @@ import { Component } from '@angular/core';
 
       .tokens-eyebrow {
         margin-bottom: 8px;
-        color: var(--ds-color-brand);
+        color: var(--color-text-link);
         font-size: 12px;
         font-weight: 800;
         letter-spacing: 0.1em;
@@ -234,10 +234,6 @@ import { Component } from '@angular/core';
 
       .tokens-demo-width {
         max-width: 720px;
-      }
-
-      .tokens-card {
-        background: var(--ds-color-surface);
       }
 
       .tokens-card--narrow {

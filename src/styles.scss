@@ -3,7 +3,7 @@
 @use './design-system/tokens/spacing' as *;
 @use './design-system/tokens/grid' as *;
 @use './design-system/components/grid/grid' as *;
-@use './design-system/tokens/design-tokens' as *;
+@use './design-system/molecules' as *;
 
 html,
 body {
