@@ -1,0 +1,39 @@
+/* ── Tags / Pills ───────────────────────────────── */
+.ds-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 9999px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.ds-tag i {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ds-tag:hover {
+  background: var(--color-primary-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}

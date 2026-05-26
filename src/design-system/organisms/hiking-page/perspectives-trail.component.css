@@ -344,7 +344,6 @@
 }
 
 .reviews-summary__score {
-  font-family: 'Lora', serif;
   font-size: 48px;
   font-weight: 600;
   line-height: 1;
@@ -618,32 +617,6 @@
   font-size: 13px;
   color: var(--text-secondary);
   line-height: 1.4;
-}
-
-/* ── Tag pills ──────────────────────────────────── */
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.tag {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
-}
-.tag:hover {
-  border-color: var(--text-primary);
-  background: var(--white);
 }
 
 /* ── Animations ─────────────────────────────────── */

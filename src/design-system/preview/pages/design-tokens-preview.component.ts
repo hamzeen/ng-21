@@ -94,6 +94,45 @@ import { Component } from '@angular/core';
 
       <section class="tokens-section">
         <div class="tokens-section__header">
+          <h2>Tags</h2>
+          <p>Use for lightweight categories, filters, activity labels or content descriptors.</p>
+        </div>
+
+        <div class="ds-tag-list">
+          <span class="ds-tag">
+            <i class="fa-solid fa-mountain" aria-hidden="true"></i>
+            <span>Alpine</span>
+          </span>
+
+          <span class="ds-tag">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            <span>Wildflowers</span>
+          </span>
+
+          <span class="ds-tag">
+            <i class="fa-solid fa-camera-retro" aria-hidden="true"></i>
+            <span>Photography</span>
+          </span>
+
+          <span class="ds-tag">
+            <i class="fa-solid fa-crow" aria-hidden="true"></i>
+            <span>Wildlife</span>
+          </span>
+
+          <span class="ds-tag">
+            <i class="fa-solid fa-person-hiking" aria-hidden="true"></i>
+            <span>Scrambling</span>
+          </span>
+
+          <span class="ds-tag">
+            <i class="fa-solid fa-sun" aria-hidden="true"></i>
+            <span>Sunset</span>
+          </span>
+        </div>
+      </section>
+
+      <section class="tokens-section">
+        <div class="tokens-section__header">
           <h2>Price breakdown</h2>
           <p>Use for booking cards, invoices or any right-aligned cost summary.</p>
         </div>
