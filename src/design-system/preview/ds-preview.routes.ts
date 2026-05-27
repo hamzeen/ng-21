@@ -13,7 +13,7 @@ export const DS_PREVIEW_ROUTES: Routes = [
       })),
       {
         path: '',
-        redirectTo: DS_PREVIEW_MANIFEST[0].path,
+        redirectTo: DS_PREVIEW_MANIFEST[6].path,
         pathMatch: 'full' as const,
       },
     ],
