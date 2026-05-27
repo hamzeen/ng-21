@@ -137,28 +137,26 @@ import { Component } from '@angular/core';
           <p>Use for booking cards, invoices or any right-aligned cost summary.</p>
         </div>
 
-        <div class="tokens-card tokens-card--narrow">
-          <div class="ds-price-breakdown">
-            <div class="ds-price-row ds-price-row--link">
-              <span>€89 × 2 guests</span>
-              <span>€178</span>
-            </div>
-            <div class="ds-price-row ds-price-row--link">
-              <span>Mountain guide fee</span>
-              <span>€0</span>
-            </div>
-            <div class="ds-price-row ds-price-row--link">
-              <span>Gondola pass</span>
-              <span>€36</span>
-            </div>
-            <div class="ds-price-row ds-price-row--link">
-              <span>Service fee</span>
-              <span>€16</span>
-            </div>
-            <div class="ds-price-row ds-price-row--total">
-              <span>Total</span>
-              <span>€230</span>
-            </div>
+        <div class="ds-price-breakdown tokens-card--narrow">
+          <div class="ds-price-row ds-price-row--link">
+            <span>€89 × 2 guests</span>
+            <span>€178</span>
+          </div>
+          <div class="ds-price-row ds-price-row--link">
+            <span>Mountain guide fee</span>
+            <span>€0</span>
+          </div>
+          <div class="ds-price-row ds-price-row--link">
+            <span>Gondola pass</span>
+            <span>€36</span>
+          </div>
+          <div class="ds-price-row ds-price-row--link">
+            <span>Service fee</span>
+            <span>€16</span>
+          </div>
+          <div class="ds-price-row ds-price-row--total">
+            <span>Total</span>
+            <span>€230</span>
           </div>
         </div>
       </section>
