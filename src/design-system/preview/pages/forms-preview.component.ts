@@ -137,6 +137,48 @@ import { Component } from '@angular/core';
 
       <section class="forms-section">
         <div class="forms-section__header">
+          <h2>Switch</h2>
+          <p>Use for simple on/off preferences backed by a native checkbox.</p>
+        </div>
+
+        <div class="ds-form">
+          <label class="ds-switch">
+            <input class="ds-switch__input" type="checkbox" />
+
+            <span class="ds-switch__content">
+              <span class="ds-switch__label">Not checked</span>
+              <span class="ds-switch__description">
+                Default off state for optional preferences.
+              </span>
+            </span>
+          </label>
+
+          <label class="ds-switch">
+            <input class="ds-switch__input" type="checkbox" checked />
+
+            <span class="ds-switch__content">
+              <span class="ds-switch__label">Checked by default</span>
+              <span class="ds-switch__description">
+                Use when a helpful preference is enabled by default.
+              </span>
+            </span>
+          </label>
+
+          <label class="ds-switch">
+            <input class="ds-switch__input" type="checkbox" disabled />
+
+            <span class="ds-switch__content">
+              <span class="ds-switch__label">Disabled</span>
+              <span class="ds-switch__description">
+                Use when the preference is unavailable or locked.
+              </span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section class="forms-section">
+        <div class="forms-section__header">
           <h2>Compact fields</h2>
           <p>Use compact variants when density matters, such as filters or side panels.</p>
         </div>
