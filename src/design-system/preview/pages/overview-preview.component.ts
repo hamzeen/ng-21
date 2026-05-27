@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="design-tokens-preview">
       <header class="tokens-hero">
-        <p class="tokens-eyebrow ">Visual Language</p>
+        <p class="tokens-eyebrow ">Molecules</p>
         <h1 class="tokens-title">Molecules Overview</h1>
         <p class="tokens-desc">
           A small reusable layer extracted from the Perspectives Trail page. The goal is not to
