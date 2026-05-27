@@ -9,6 +9,12 @@ An opinionated Angular starter using standalone APIs, Signals, httpResource, Tai
 
 # 🚀 Getting Started
 
+## Design System
+
+Preview the app’s visual language, reusable molecules, and page-level organisms in the design system playground.
+
+[Open Design System](https://hamzeen.github.io/ng-21/#/ds)
+
 ## Install Dependencies
 
 ```bash
