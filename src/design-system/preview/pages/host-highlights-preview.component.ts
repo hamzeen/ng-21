@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   HostHighlightsComponent,
   HostHighlightItem,
-} from '@design-system/organisms/host-highlights';
+} from '@design-system/molecules/host-highlights';
 
 @Component({
   selector: 'ds-host-highlights-preview',

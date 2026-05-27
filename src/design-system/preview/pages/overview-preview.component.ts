@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <div class="design-tokens-preview">
       <header class="tokens-hero">
         <p class="tokens-eyebrow ">Visual Language</p>
-        <h1 class="tokens-title">Design Tokens</h1>
+        <h1 class="tokens-title">Molecules Overview</h1>
         <p class="tokens-desc">
           A small reusable layer extracted from the Perspectives Trail page. The goal is not to
           create a heavy framework, but to make the next page easier to build with consistent
