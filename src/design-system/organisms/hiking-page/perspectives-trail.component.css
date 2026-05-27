@@ -536,33 +536,6 @@
   margin-bottom: 20px;
 }
 
-.price-breakdown {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.price-breakdown__row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 15px;
-  color: var(--text-secondary);
-}
-
-.price-breakdown__row--total {
-  color: var(--text-primary);
-  font-weight: 700;
-  font-size: 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  margin-top: 4px;
-}
-
-.price-breakdown__row--underline span:first-child {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 /* ── Map placeholder ────────────────────────────── */
 .map-placeholder {
   border-radius: var(--radius-lg);
@@ -661,17 +634,8 @@
   align-items: flex-start;
 }
 
-.rare-find__desc,
-.price-breakdown__row span:first-child {
+.rare-find__desc {
   overflow-wrap: anywhere;
-}
-
-.price-breakdown__row {
-  gap: 16px;
-}
-
-.price-breakdown__row span:last-child {
-  flex-shrink: 0;
 }
 
 .rare-find__icon {
