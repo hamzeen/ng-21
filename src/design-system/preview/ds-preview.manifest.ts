@@ -9,14 +9,14 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
   {
     path: 'button',
     label: 'Button',
-    group: 'Form Controls',
+    group: 'Primitives',
     loadComponent: () =>
       import('./pages/button-preview.component').then((m) => m.ButtonPreviewComponent),
   },
   {
     path: 'busy-button',
     label: 'Busy Button',
-    group: 'Form Controls',
+    group: 'Primitives',
     loadComponent: () =>
       import('./pages/busy-button-preview.component').then((m) => m.BusyButtonPreviewComponent),
   },
@@ -47,6 +47,13 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
     group: 'Components',
     loadComponent: () =>
       import('./pages/dialog-preview.component').then((m) => m.DialogPreviewComponent),
+  },
+  {
+    path: 'forms',
+    label: 'Forms',
+    group: 'Primitives',
+    loadComponent: () =>
+      import('./pages/forms-preview.component').then((m) => m.FormsPreviewComponent),
   },
   {
     path: 'colors',
