@@ -163,8 +163,8 @@ import { Component } from '@angular/core';
 
       <section class="tokens-section">
         <div class="tokens-section__header">
-          <h2>Gig score</h2>
-          <p>Use for rating, difficulty score, quality score or any three-part trust summary.</p>
+          <h2>Score strip</h2>
+          <p>Use for ratings, review counts, badges or any three-part trust summary.</p>
         </div>
 
         <div class="ds-score-strip">
