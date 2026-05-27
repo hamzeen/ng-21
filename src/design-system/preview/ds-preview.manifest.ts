@@ -76,17 +76,17 @@ export const DS_PREVIEW_MANIFEST: DsPreviewItem[] = [
       import('./pages/grid-preview.component').then((m) => m.GridPreviewComponent),
   },
   {
-    path: 'design-tokens',
-    label: 'Design Tokens',
-    group: 'Visual Language',
+    path: 'overview',
+    label: 'Molecules Overview',
+    group: 'Molecules',
     loadComponent: () =>
-      import('./pages/design-tokens-preview.component').then((m) => m.DesignTokensPreviewComponent),
+      import('./pages/overview-preview.component').then((m) => m.OverviewPreviewComponent),
   },
 
   {
     path: 'host-highlights',
     label: 'Host Highlights',
-    group: 'Organisms',
+    group: 'Molecules',
     loadComponent: () =>
       import('./pages/host-highlights-preview.component').then(
         (m) => m.HostHighlightsPreviewComponent,

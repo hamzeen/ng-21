@@ -285,4 +285,4 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class DesignTokensPreviewComponent {}
+export class OverviewPreviewComponent {}

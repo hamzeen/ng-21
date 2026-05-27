@@ -33,8 +33,8 @@ export const NAV_LINKS: NavLink[] = [
     label: 'Recipes',
   },
   {
-    route: '/icon-doc',
-    icon: 'fa-regular fa-rectangle-list',
-    label: 'Icon Documentation',
+    route: '/ds',
+    icon: 'fa-solid fa-swatchbook',
+    label: 'Design System',
   },
 ];
