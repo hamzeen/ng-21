@@ -310,31 +310,6 @@
   line-height: 1.5;
 }
 
-/* ── Photo row ──────────────────────────────────── */
-.photo-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.photo-row__item {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  aspect-ratio: 4/3;
-}
-
-.photo-row__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.photo-row__item img:hover {
-  transform: scale(1.04);
-}
-
 /* ── Reviews ────────────────────────────────────── */
 .reviews-summary {
   display: flex;
@@ -690,7 +665,6 @@
   }
 
   .details-grid,
-  .photo-row,
   .reviews-grid {
     grid-template-columns: 1fr;
   }
