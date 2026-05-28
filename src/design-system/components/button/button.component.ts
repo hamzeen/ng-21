@@ -84,6 +84,12 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
   lg: 'h-12 px-6 text-base',
 };
 
+const ICON_ONLY_SIZE_CLASSES: Record<ButtonSize, string> = {
+  sm: 'size-9 p-0 text-sm',
+  md: 'size-11 p-0 text-sm',
+  lg: 'size-12 p-0 text-base',
+};
+
 @Component({
   selector: 'ds-button',
   standalone: true,
@@ -92,6 +98,7 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
       [type]="type()"
       [disabled]="disabled()"
       [attr.aria-disabled]="disabled()"
+      [attr.aria-label]="iconOnly() ? ariaLabel() : null"
       [class]="classes()"
       (click)="onClick($event)"
     >
@@ -111,6 +118,8 @@ export class ButtonComponent {
   label = input<string>('');
   disabled = input(false);
   fullWidth = input(false);
+  iconOnly = input(false);
+  ariaLabel = input<string>('');
 
   clicked = output<MouseEvent>();
 
@@ -118,8 +127,9 @@ export class ButtonComponent {
     [
       BASE_CLASSES,
       VARIANT_CLASSES[this.variant()],
-      SIZE_CLASSES[this.size()],
-      this.fullWidth() ? 'w-full' : '',
+      this.iconOnly() ? ICON_ONLY_SIZE_CLASSES[this.size()] : SIZE_CLASSES[this.size()],
+      this.fullWidth() && !this.iconOnly() ? 'w-full' : '',
+      this.iconOnly() ? 'rounded-full' : '',
     ]
       .filter(Boolean)
       .join(' '),

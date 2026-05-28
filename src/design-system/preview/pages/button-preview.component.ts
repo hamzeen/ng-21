@@ -11,8 +11,9 @@ import { ButtonComponent } from '@design-system/components/button';
       <!-- Title -->
       <h1 class="preview-title">Button</h1>
       <p class="text-sm text-gray-500 leading-relaxed mb-10">
-        A flexible, accessible button component. Supports variants, sizes, full width, label input
-        and custom projected content via <code class="ds-code">ng-content</code>.
+        A flexible, accessible button component. Supports variants, sizes, full width, icon-only
+        actions, label input and custom projected content via
+        <code class="ds-code">ng-content</code>.
       </p>
 
       <!-- ── Variants ───────────────────────────────── -->
@@ -111,6 +112,42 @@ import { ButtonComponent } from '@design-system/components/button';
         </div>
       </section>
 
+      <!-- ── Icon Only ─────────────────────────────── -->
+      <section class="mb-12">
+        <h2 class="ds-section-label">Icon Only</h2>
+        <p class="ds-section-desc">
+          Use <code class="ds-code">[iconOnly]="true"</code> for compact circular actions such as
+          search, filters, back, close or favourite. Always provide
+          <code class="ds-code">ariaLabel</code>.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <ds-button variant="primary" size="sm" [iconOnly]="true" ariaLabel="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </ds-button>
+
+          <ds-button variant="primary" size="md" [iconOnly]="true" ariaLabel="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </ds-button>
+
+          <ds-button variant="primary" size="lg" [iconOnly]="true" ariaLabel="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </ds-button>
+
+          <ds-button variant="secondary" size="md" [iconOnly]="true" ariaLabel="Open filters">
+            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+          </ds-button>
+
+          <ds-button variant="tertiary" size="md" [iconOnly]="true" ariaLabel="Go back">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </ds-button>
+
+          <ds-button variant="danger" size="md" [iconOnly]="true" ariaLabel="Delete">
+            <i class="fa-solid fa-trash" aria-hidden="true"></i>
+          </ds-button>
+        </div>
+      </section>
+
       <!-- ── API Reference ──────────────────────────── -->
       <section class="mb-12">
         <h2 class="ds-section-label mb-4">API Reference</h2>
@@ -182,7 +219,7 @@ export class ButtonPreviewComponent {
       input: 'variant',
       type: 'ButtonVariant',
       default: "'primary'",
-      description: 'primary | secondary | danger',
+      description: 'primary | secondary | tertiary | danger',
     },
     { input: 'size', type: 'ButtonSize', default: "'md'", description: 'sm | md | lg' },
     {
@@ -202,6 +239,18 @@ export class ButtonPreviewComponent {
       type: 'boolean',
       default: 'false',
       description: 'Stretches button to full container width',
+    },
+    {
+      input: 'iconOnly',
+      type: 'boolean',
+      default: 'false',
+      description: 'Makes the button circular for icon-only actions',
+    },
+    {
+      input: 'ariaLabel',
+      type: 'string',
+      default: "''",
+      description: 'Accessible label for icon-only buttons',
     },
   ];
 }

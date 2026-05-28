@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { ButtonComponent } from '@design-system/components/button';
 
 @Component({
   selector: 'ds-forms-preview',
   standalone: true,
+  imports: [ButtonComponent],
   template: `
     <div class="forms-preview">
       <header class="forms-hero">
@@ -72,6 +74,43 @@ import { Component } from '@angular/core';
             </div>
             <p class="ds-helper-text">Useful for booking cards, invoices and payment flows.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="forms-section">
+        <div class="forms-section__header">
+          <h2>Search composition</h2>
+          <p>Use form primitives with an icon-only button for compact search experiences.</p>
+        </div>
+
+        <div class="forms-search-shell">
+          <div class="forms-search-field">
+            <label class="forms-search-label" for="search-where">Where</label>
+            <input
+              id="search-where"
+              class="forms-search-input"
+              type="text"
+              placeholder="Search destinations"
+            />
+          </div>
+
+          <div class="forms-search-divider" aria-hidden="true"></div>
+
+          <div class="forms-search-field">
+            <label class="forms-search-label" for="search-when">When</label>
+            <input id="search-when" class="forms-search-input" type="text" placeholder="Add dates" />
+          </div>
+
+          <div class="forms-search-divider" aria-hidden="true"></div>
+
+          <div class="forms-search-field">
+            <label class="forms-search-label" for="search-who">Who</label>
+            <input id="search-who" class="forms-search-input" type="text" placeholder="Add guests" />
+          </div>
+
+          <ds-button variant="primary" size="lg" [iconOnly]="true" ariaLabel="Search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </ds-button>
         </div>
       </section>
 
@@ -264,9 +303,73 @@ import { Component } from '@angular/core';
         max-width: 520px;
       }
 
+      .forms-search-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0;
+        width: min(100%, 980px);
+        min-height: 72px;
+        border: 1px solid var(--color-gray-300);
+        border-radius: 9999px;
+        background: var(--color-white);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        padding: 8px 10px 8px 28px;
+      }
+
+      .forms-search-field {
+        min-width: 0;
+      }
+
+      .forms-search-label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--color-gray-900);
+      }
+
+      .forms-search-input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        background: transparent;
+        color: var(--color-gray-900);
+        font-size: 16px;
+        line-height: 1.3;
+        outline: none;
+      }
+
+      .forms-search-input::placeholder {
+        color: var(--color-gray-500);
+      }
+
+      .forms-search-divider {
+        width: 1px;
+        height: 36px;
+        margin-inline: 28px;
+        background: var(--color-gray-300);
+      }
+
       @media (max-width: 640px) {
         .forms-title {
           font-size: 32px;
+        }
+
+        .forms-search-shell {
+          grid-template-columns: 1fr auto;
+          row-gap: 16px;
+          border-radius: 32px;
+          padding: 20px;
+        }
+
+        .forms-search-divider {
+          display: none;
+        }
+
+        .forms-search-field {
+          grid-column: 1 / -1;
         }
       }
     `,
