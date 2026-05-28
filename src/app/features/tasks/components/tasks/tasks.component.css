@@ -113,6 +113,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .tasks-section-header {
@@ -229,6 +230,7 @@
 }
 
 .tasks-add-form {
+  flex: 0 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -249,18 +251,21 @@
   }
 
   .tasks-app {
-    min-height: min(720px, calc(100svh - 64px));
+    height: min(720px, calc(100svh - 64px));
+    min-height: 0;
     padding: 32px;
   }
 }
 
 @media (max-width: 420px) {
   .tasks-page {
+    height: 100svh;
     padding: 0;
   }
 
   .tasks-app {
-    min-height: 100svh;
+    height: 100svh;
+    min-height: 0;
     border-radius: 0;
     border-inline: 0;
     padding: 20px;
@@ -271,10 +276,108 @@
   }
 
   .tasks-add-form {
-    position: sticky;
-    bottom: 0;
     margin-inline: -20px;
     padding: 12px 20px 20px;
     background: linear-gradient(to top, var(--color-white, #ffffff) 74%, rgba(255, 255, 255, 0));
+  }
+}
+
+/* Short mobile landscape mode */
+@media (max-height: 520px) and (orientation: landscape) {
+  .tasks-page {
+    padding: 12px;
+  }
+
+  .tasks-app {
+    height: calc(100svh - 24px);
+    gap: 10px;
+    padding: 18px;
+    border-radius: 28px;
+  }
+
+  .tasks-header {
+    padding-top: 0;
+  }
+
+  .tasks-greeting {
+    display: none;
+  }
+
+  .tasks-title {
+    font-size: clamp(28px, 6vw, 42px);
+    line-height: 0.95;
+  }
+
+  .tasks-summary {
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 22px;
+  }
+
+  .tasks-summary__icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    border-radius: 14px;
+  }
+
+  .tasks-summary__title {
+    font-size: var(--text-sm, 14px);
+  }
+
+  .tasks-summary__meta {
+    margin-top: 2px;
+    font-size: var(--text-sm, 14px);
+  }
+
+  .tasks-progress {
+    display: none;
+  }
+
+  .tasks-section-header {
+    margin-bottom: 6px;
+  }
+
+  .tasks-section-header h2 {
+    font-size: var(--text-md, 16px);
+  }
+
+  .tasks-list {
+    gap: 8px;
+  }
+
+  .tasks-item {
+    min-height: 48px;
+    padding-block: 8px;
+  }
+
+  .tasks-status-button,
+  .tasks-remove-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tasks-add-form {
+    padding-top: 0;
+  }
+
+  .tasks-add-input {
+    height: 44px;
+  }
+}
+
+/* Extra-short landscape: prioritise the task list */
+@media (max-height: 420px) and (orientation: landscape) {
+  .tasks-title {
+    font-size: clamp(24px, 5vw, 34px);
+  }
+
+  .tasks-summary {
+    display: none;
+  }
+
+  .tasks-item {
+    min-height: 44px;
+    padding-block: 7px;
   }
 }
