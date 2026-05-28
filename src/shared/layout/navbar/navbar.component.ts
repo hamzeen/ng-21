@@ -10,7 +10,7 @@ import { NAV_LINKS } from '../../constants/nav-links.config';
   imports: [RouterLink, RouterLinkActive, CommonModule],
   template: `
     <aside
-      class="flex h-screen flex-col overflow-hidden bg-slate-950 text-white shadow-xl transition-all duration-300 ease-in-out"
+      class="flex h-svh min-h-0 flex-col overflow-hidden bg-slate-950 text-white shadow-xl transition-all duration-300 ease-in-out"
       [class.w-64]="isOpen()"
       [class.w-20]="!isOpen()"
     >
@@ -40,7 +40,7 @@ import { NAV_LINKS } from '../../constants/nav-links.config';
       </div>
 
       <!-- Navigation -->
-      <nav class="flex-1 px-3 py-4">
+      <nav class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
         <div class="space-y-1">
           @for (link of navLinks; track link.route) {
             <a
@@ -70,7 +70,7 @@ import { NAV_LINKS } from '../../constants/nav-links.config';
       </nav>
 
       <!-- User Footer -->
-      <div class="border-t border-white/10 px-4 py-4">
+      <div class="shrink-0 border-t border-white/10 px-4 py-4">
         <div
           class="flex items-center gap-3"
           [class.justify-start]="isOpen()"
