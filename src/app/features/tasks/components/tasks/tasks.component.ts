@@ -2,6 +2,9 @@ import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { sessionStore } from '../../../../core/store/session.store';
 
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '@design-system/components/button';
+
 const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
   { text: 'buy chocolates', completed: true },
   { text: 'have coffee', completed: false },
@@ -10,7 +13,7 @@ const DEFAULT_TODOS: { text: string; completed: boolean }[] = [
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [CommonModule],
+  imports: [FormsModule, ButtonComponent],
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css'],
 })
