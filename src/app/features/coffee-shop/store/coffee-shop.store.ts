@@ -71,7 +71,9 @@ export class CoffeeShopStore {
   readonly totalCompletedToday = computed(() => this.completedOrdersToday().length);
 
   readonly dailyFulfillmentSummary = computed<DailyFulfillmentSummary>(() => {
-    const fulfilledOrders = this.completedOrdersToday().filter((order) => order.claimedAt && order.completedAt);
+    const fulfilledOrders = this.completedOrdersToday().filter(
+      (order) => order.claimedAt && order.completedAt,
+    );
     const totalFulfillmentMs = fulfilledOrders.reduce(
       (total, order) => total + ((order.completedAt ?? 0) - (order.claimedAt ?? 0)),
       0,
@@ -97,21 +99,22 @@ export class CoffeeShopStore {
       groupedByBarista.set(key, existing);
     }
 
-    const leaderboard = Array.from(groupedByBarista.values())
-      .sort((a, b) => {
-        const completedOrderDifference = b.completedOrders - a.completedOrders;
+    const leaderboard = Array.from(groupedByBarista.values()).sort((a, b) => {
+      const completedOrderDifference = b.completedOrders - a.completedOrders;
 
-        if (completedOrderDifference !== 0) {
-          return completedOrderDifference;
-        }
+      if (completedOrderDifference !== 0) {
+        return completedOrderDifference;
+      }
 
-        return a.averageFulfillmentMs - b.averageFulfillmentMs;
-      });
+      return a.averageFulfillmentMs - b.averageFulfillmentMs;
+    });
 
     return {
       completedOrders: fulfilledOrders.length,
       totalFulfillmentMs,
-      averageFulfillmentMs: fulfilledOrders.length ? totalFulfillmentMs / fulfilledOrders.length : 0,
+      averageFulfillmentMs: fulfilledOrders.length
+        ? totalFulfillmentMs / fulfilledOrders.length
+        : 0,
       leaderboard,
       bestPerformer: leaderboard[0],
     };
@@ -158,7 +161,7 @@ export class CoffeeShopStore {
       tabletId: normalizedTabletId,
       name: normalizedName,
       activeOrderId: isSameShiftDay ? existing?.activeOrderId : undefined,
-      completedCount: isSameShiftDay ? existing?.completedCount ?? 0 : 0,
+      completedCount: isSameShiftDay ? (existing?.completedCount ?? 0) : 0,
       clockedInAt: isSameShiftDay ? existing!.clockedInAt : now,
       lastSeenAt: now,
     };
@@ -178,9 +181,11 @@ export class CoffeeShopStore {
   }
 
   getLastKnownBaristaName(tabletId: string): string {
-    return this.getStoredShiftSession(tabletId)?.name
-      ?? localStorage.getItem(this.legacyTabletNameStorageKey(tabletId))
-      ?? '';
+    return (
+      this.getStoredShiftSession(tabletId)?.name ??
+      localStorage.getItem(this.legacyTabletNameStorageKey(tabletId)) ??
+      ''
+    );
   }
 
   getTodaysShiftSession(tabletId: string): BaristaShiftSession | undefined {
@@ -272,7 +277,12 @@ export class CoffeeShopStore {
       const latestOrder = current.orders.find((item) => item.id === orderId);
       const latestBarista = current.baristas.find((item) => item.tabletId === tabletId);
 
-      if (!latestOrder || !latestBarista || latestOrder.status !== 'pending' || latestBarista.activeOrderId) {
+      if (
+        !latestOrder ||
+        !latestBarista ||
+        latestOrder.status !== 'pending' ||
+        latestBarista.activeOrderId
+      ) {
         return current;
       }
 
@@ -288,9 +298,7 @@ export class CoffeeShopStore {
         ...current,
         orders: current.orders.map((item) => (item.id === orderId ? claimedOrder! : item)),
         baristas: current.baristas.map((item) =>
-          item.tabletId === tabletId
-            ? { ...item, activeOrderId: orderId, lastSeenAt: now }
-            : item,
+          item.tabletId === tabletId ? { ...item, activeOrderId: orderId, lastSeenAt: now } : item,
         ),
       };
     });
@@ -341,9 +349,10 @@ export class CoffeeShopStore {
   resetDay(): void {
     this.state.set(INITIAL_STATE);
     Object.keys(localStorage)
-      .filter((key) =>
-        key.startsWith(TABLET_SHIFT_STORAGE_PREFIX) ||
-        key.startsWith(LEGACY_TABLET_NAME_STORAGE_PREFIX),
+      .filter(
+        (key) =>
+          key.startsWith(TABLET_SHIFT_STORAGE_PREFIX) ||
+          key.startsWith(LEGACY_TABLET_NAME_STORAGE_PREFIX),
       )
       .forEach((key) => localStorage.removeItem(key));
   }
@@ -353,12 +362,20 @@ export class CoffeeShopStore {
       return;
     }
 
-    this.registerBarista('tablet-1', 'Nimal');
-    this.registerBarista('tablet-2', 'Sara');
+    this.registerBarista('tablet-1', 'Nitroen');
+    this.registerBarista('tablet-2', 'Fabienne');
 
-    const completedOrder = this.createOrder([{ id: crypto.randomUUID(), name: 'Cappuccino', quantity: 1 }], 'Walk-in');
-    const nimalOrder = this.createOrder([{ id: crypto.randomUUID(), name: 'Flat White', quantity: 2 }], 'Table 3');
-    const saraOrder = this.createOrder([{ id: crypto.randomUUID(), name: 'Americano', quantity: 1 }]);
+    const completedOrder = this.createOrder(
+      [{ id: crypto.randomUUID(), name: 'Cappuccino', quantity: 1 }],
+      'Walk-in',
+    );
+    const nimalOrder = this.createOrder(
+      [{ id: crypto.randomUUID(), name: 'Flat White', quantity: 2 }],
+      'Table 3',
+    );
+    const saraOrder = this.createOrder([
+      { id: crypto.randomUUID(), name: 'Americano', quantity: 1 },
+    ]);
 
     this.claimOrder(completedOrder.id, 'tablet-1');
     this.completeOrder(completedOrder.id, 'tablet-1');
@@ -369,10 +386,7 @@ export class CoffeeShopStore {
   private upsertBarista(barista: Barista): void {
     this.state.update((current) => ({
       ...current,
-      baristas: [
-        ...current.baristas.filter((item) => item.tabletId !== barista.tabletId),
-        barista,
-      ],
+      baristas: [...current.baristas.filter((item) => item.tabletId !== barista.tabletId), barista],
     }));
   }
 
@@ -413,9 +427,11 @@ export class CoffeeShopStore {
     const date = new Date(timestamp);
     const compareDate = new Date(compareTimestamp);
 
-    return date.getFullYear() === compareDate.getFullYear()
-      && date.getMonth() === compareDate.getMonth()
-      && date.getDate() === compareDate.getDate();
+    return (
+      date.getFullYear() === compareDate.getFullYear() &&
+      date.getMonth() === compareDate.getMonth() &&
+      date.getDate() === compareDate.getDate()
+    );
   }
 
   private loadState(): CoffeeShopState {

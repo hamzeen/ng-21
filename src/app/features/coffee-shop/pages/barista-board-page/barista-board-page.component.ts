@@ -25,13 +25,15 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
         </div>
 
         <div class="flex flex-wrap gap-2">
-          <span class="rounded-xl bg-[var(--color-white)] px-4 py-2 text-sm font-semibold text-[var(--color-gray-700)] shadow-sm">
+          <span class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-success-subtle)] px-4 py-2 text-sm font-semibold text-[var(--color-success)] shadow-sm">
+            <i aria-hidden="true" class="fa-solid fa-circle-check"></i>
             Done: {{ barista()?.completedCount ?? 0 }}
           </span>
           <a
             routerLink="/coffee-shop/pos"
-            class="rounded-xl bg-[var(--color-white)] px-4 py-2 text-sm font-semibold text-[var(--color-gray-700)] shadow-sm"
+            class="inline-flex items-center gap-2 rounded-xl bg-[var(--color-white)] px-4 py-2 text-sm font-semibold text-[var(--color-gray-700)] shadow-sm"
           >
+            <i aria-hidden="true" class="fa-solid fa-cash-register text-[var(--color-primary)]"></i>
             POS
           </a>
         </div>
@@ -39,6 +41,7 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
 
       @if (!barista()) {
         <section class="mx-auto max-w-5xl rounded-3xl bg-[var(--color-white)] p-6 text-center shadow-sm">
+          <i aria-hidden="true" class="fa-solid fa-user-plus mb-3 text-3xl text-[var(--color-primary)]"></i>
           <h2 class="text-xl font-bold">Name required</h2>
           <p class="mt-2 text-sm text-[var(--color-gray-500)]">Start your shift before picking orders.</p>
           <button
@@ -55,11 +58,16 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
 
           <section class="rounded-3xl bg-[var(--color-white)] p-5 shadow-sm">
             <div class="mb-5 flex items-center justify-between gap-4">
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]">Choose your next work</p>
-                <h2 class="text-xl font-bold">Pending Orders</h2>
+              <div class="flex items-center gap-3">
+                <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-warning-subtle)] text-[var(--color-warning)]">
+                  <i aria-hidden="true" class="fa-solid fa-bell-concierge"></i>
+                </span>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]">Choose your next work</p>
+                  <h2 class="text-xl font-bold">Pending Orders</h2>
+                </div>
               </div>
-              <span class="rounded-full bg-[var(--color-gray-100)] px-3 py-1 text-sm font-semibold text-[var(--color-gray-700)]">
+              <span class="rounded-full bg-[var(--color-warning-subtle)] px-3 py-1 text-sm font-semibold text-[var(--color-warning)]">
                 {{ store.pendingOrders().length }} waiting
               </span>
             </div>
@@ -77,7 +85,8 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
                 }
               </div>
             } @else {
-              <div class="rounded-2xl border border-dashed border-[var(--color-gray-300)] p-8 text-center">
+              <div class="rounded-2xl border border-dashed border-[var(--color-gray-300)] bg-[var(--color-gray-100)] p-8 text-center">
+                <i aria-hidden="true" class="fa-solid fa-mug-hot mb-3 text-2xl text-[var(--color-gray-500)]"></i>
                 <p class="text-sm font-medium text-[var(--color-gray-700)]">No pending orders</p>
                 <p class="mt-1 text-sm text-[var(--color-gray-500)]">New orders will appear here.</p>
               </div>

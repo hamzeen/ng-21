@@ -6,6 +6,7 @@ import { OrderStatus, ORDER_STATUS_LABEL } from '../../models/order-status.model
   standalone: true,
   template: `
     <span [class]="statusClass()">
+      <i aria-hidden="true" [class]="iconClass()"></i>
       {{ label() }}
     </span>
   `,
@@ -17,14 +18,25 @@ export class OrderStatusBadgeComponent {
     return ORDER_STATUS_LABEL[this.status()];
   }
 
+  iconClass(): string {
+    switch (this.status()) {
+      case 'pending':
+        return 'fa-solid fa-receipt text-[0.65rem]';
+      case 'in-progress':
+        return 'fa-solid fa-mug-hot text-[0.65rem]';
+      case 'completed':
+        return 'fa-solid fa-circle-check text-[0.65rem]';
+    }
+  }
+
   statusClass(): string {
     switch (this.status()) {
       case 'pending':
-        return 'inline-flex items-center rounded-full bg-[var(--color-gray-100)] px-2.5 py-1 text-xs font-semibold text-[var(--color-gray-700)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-warning-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-warning)]';
       case 'in-progress':
-        return 'inline-flex items-center rounded-full bg-[var(--color-secondary-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-secondary-hover)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-info-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-info)]';
       case 'completed':
-        return 'inline-flex items-center rounded-full bg-[var(--color-success-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-success)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-success-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-success)]';
     }
   }
 }
