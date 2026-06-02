@@ -34,41 +34,71 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
         </a>
       </header>
 
-      <section class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+      <section class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
         <article class="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm">
           <i
             aria-hidden="true"
-            class="fa-solid fa-stopwatch absolute -right-4 -top-5 text-8xl text-[var(--color-primary)] opacity-5"
+            class="fa-solid fa-stopwatch pointer-events-none absolute -right-5 -top-5 text-9xl text-[var(--color-primary)] opacity-5"
           ></i>
 
-          <div class="relative flex items-start gap-4">
-            <span
-              class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-xl text-[var(--color-primary)]"
-            >
-              <i aria-hidden="true" class="fa-solid fa-stopwatch"></i>
-            </span>
+          <div class="relative">
+            <div class="flex items-center gap-4">
+              <span
+                class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-xl text-[var(--color-primary)]"
+              >
+                <i aria-hidden="true" class="fa-solid fa-stopwatch"></i>
+              </span>
 
-            <div class="min-w-0">
-              <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]">
-                Today
-              </p>
-              <h2 class="mt-1 text-xl font-bold">Average fulfilment time</h2>
-
-              <div class="mt-5 flex flex-wrap items-end gap-4">
-                <p class="text-4xl font-bold tracking-tight md:text-5xl">
-                  {{ formatDuration(store.dailyFulfillmentSummary().averageFulfillmentMs) }}
+              <div class="min-w-0">
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]"
+                >
+                  Today
                 </p>
-                <p class="pb-1 text-sm text-[var(--color-gray-500)]">
-                  across {{ store.dailyFulfillmentSummary().completedOrders }} completed order(s)
-                </p>
+                <h2 class="mt-1 text-xl font-bold">Average fulfilment</h2>
               </div>
+            </div>
 
-              <p class="mt-4 text-sm text-[var(--color-gray-500)]">
-                Total pickup-to-completion time:
-                <span class="font-semibold text-[var(--color-gray-700)]">
-                  {{ formatDuration(store.dailyFulfillmentSummary().totalFulfillmentMs) }}
-                </span>
+            <div class="my-10 text-center">
+              <p class="text-4xl font-bold tracking-tight md:text-5xl">
+                {{ formatDuration(store.dailyFulfillmentSummary().averageFulfillmentMs) }}
               </p>
+            </div>
+
+            <div class="border-t border-[var(--color-gray-300)] pt-6">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex min-w-0 items-center gap-3">
+                  <span
+                    class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-[var(--color-primary)]"
+                  >
+                    <i aria-hidden="true" class="fa-solid fa-bag-shopping"></i>
+                  </span>
+
+                  <div class="min-w-0">
+                    <p class="text-xl font-bold">
+                      {{ store.dailyFulfillmentSummary().completedOrders }}
+                    </p>
+                    <p class="text-sm text-[var(--color-gray-500)]">Orders</p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex min-w-0 items-center gap-3 border-l border-[var(--color-gray-300)] pl-4"
+                >
+                  <span
+                    class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-[var(--color-primary)]"
+                  >
+                    <i aria-hidden="true" class="fa-solid fa-clock"></i>
+                  </span>
+
+                  <div class="min-w-0">
+                    <p class="truncate text-xl font-bold">
+                      {{ formatDuration(store.dailyFulfillmentSummary().totalFulfillmentMs) }}
+                    </p>
+                    <p class="text-sm text-[var(--color-gray-500)]">Duration</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -76,42 +106,83 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
         <article class="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm">
           <i
             aria-hidden="true"
-            class="fa-solid fa-medal absolute -right-4 -top-5 text-8xl text-[var(--color-secondary)] opacity-5"
+            class="fa-solid fa-star pointer-events-none absolute -right-5 -top-5 text-9xl text-[var(--color-secondary)] opacity-5"
           ></i>
 
-          <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]">
-            Leaderboard
-          </p>
-          <h2 class="mt-1 text-xl font-bold">Best performer today</h2>
-          <p class="mt-1 text-sm text-[var(--color-gray-500)]">
-            Ranked by completed orders first, then average fulfilment time.
-          </p>
+          <div class="relative">
+            <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-500)]">
+              Leaderboard
+            </p>
+            <h2 class="mt-1 text-xl font-bold">Best performer today</h2>
 
-          @if (store.dailyFulfillmentSummary().bestPerformer; as bestPerformer) {
-            <div class="mt-5 flex items-center gap-4 rounded-2xl bg-[var(--color-primary)] p-4">
-              <span
-                class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-xl text-[var(--color-white)]"
+            @if (store.dailyFulfillmentSummary().bestPerformer; as bestPerformer) {
+              <div
+                class="mt-4 overflow-hidden rounded-3xl bg-[var(--color-primary-subtle)] p-5 md:p-6"
               >
-                <i aria-hidden="true" class="fa-solid fa-trophy text-3xl"></i>
-              </span>
+                <div class="flex min-w-0 items-center gap-4">
+                  <span
+                    class="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-2xl text-white shadow-sm"
+                  >
+                    <i aria-hidden="true" class="fa-solid fa-trophy"></i>
+                  </span>
 
-              <div class="min-w-0">
-                <p class="truncate text-2xl font-bold text-[var(--color-white)]">
-                  {{ bestPerformer.baristaName }}
-                </p>
-                <p class="mt-1 text-md text-[var(--color-white)]">
-                  {{ bestPerformer.completedOrders }} completed order(s) · Avg.
-                  {{ formatDuration(bestPerformer.averageFulfillmentMs) }}
-                </p>
+                  <div class="min-w-0">
+                    <span
+                      class="inline-flex rounded-full bg-[var(--color-primary)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-white"
+                    >
+                      Top performer
+                    </span>
+
+                    <p
+                      class="mt-3 truncate text-3xl font-bold tracking-tight text-[var(--color-gray-900)] md:text-4xl"
+                    >
+                      {{ bestPerformer.baristaName }}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          } @else {
-            <div
-              class="mt-5 rounded-2xl border border-dashed border-[var(--color-gray-300)] p-4 text-sm text-[var(--color-gray-500)]"
-            >
-              No completed orders with fulfilment time yet.
-            </div>
-          }
+
+              <div class="mt-2 border-t border-[var(--color-gray-300)] pt-6">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex min-w-0 items-center gap-3">
+                    <span
+                      class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-[var(--color-primary)]"
+                    >
+                      <i aria-hidden="true" class="fa-solid fa-bag-shopping"></i>
+                    </span>
+
+                    <div class="min-w-0">
+                      <p class="text-xl font-bold">{{ bestPerformer.completedOrders }}</p>
+                      <p class="text-sm text-[var(--color-gray-500)]">Orders</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="flex min-w-0 items-center gap-3 border-l border-[var(--color-gray-300)] pl-4"
+                  >
+                    <span
+                      class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-[var(--color-primary)]"
+                    >
+                      <i aria-hidden="true" class="fa-solid fa-clock"></i>
+                    </span>
+
+                    <div class="min-w-0">
+                      <p class="truncate text-xl font-bold">
+                        {{ formatDuration(bestPerformer.averageFulfillmentMs) }}
+                      </p>
+                      <p class="text-sm text-[var(--color-gray-500)]">Avg</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            } @else {
+              <div
+                class="mt-5 rounded-2xl border border-dashed border-[var(--color-gray-300)] p-4 text-sm text-[var(--color-gray-500)]"
+              >
+                No completed orders with fulfilment time yet.
+              </div>
+            }
+          </div>
         </article>
       </section>
 
