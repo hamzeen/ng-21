@@ -46,4 +46,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('../design-system/preview/ds-preview.routes').then((m) => m.DS_PREVIEW_ROUTES),
   },
+  {
+    path: 'coffee-shop',
+    loadChildren: () =>
+      import('./features/coffee-shop/coffee-shop.routes').then((m) => m.COFFEE_SHOP_ROUTES),
+  },
 ];

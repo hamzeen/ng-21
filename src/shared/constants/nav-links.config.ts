@@ -7,10 +7,26 @@ export interface NavLink {
 
 export const NAV_LINKS: NavLink[] = [
   {
+    route: '/coffee-shop/pos',
+    icon: 'fa-solid fa-list-check',
+    label: 'Coffee Shop',
+    exact: true,
+  },
+  {
     route: '/',
     icon: 'fa-solid fa-list-check',
     label: 'My Tasks',
     exact: true,
+  },
+  {
+    route: '/recipes',
+    icon: 'fa-solid fa-utensils',
+    label: 'Recipes',
+  },
+  {
+    route: '/ds',
+    icon: 'fa-solid fa-swatchbook',
+    label: 'Design System',
   },
   {
     route: '/signal-computed-demo',
@@ -26,15 +42,5 @@ export const NAV_LINKS: NavLink[] = [
     route: '/list',
     icon: 'fa-regular fa-rectangle-list',
     label: 'Invoice List',
-  },
-  {
-    route: '/recipes',
-    icon: 'fa-solid fa-utensils',
-    label: 'Recipes',
-  },
-  {
-    route: '/ds',
-    icon: 'fa-solid fa-swatchbook',
-    label: 'Design System',
   },
 ];
