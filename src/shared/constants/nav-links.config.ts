@@ -8,14 +8,14 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   {
     route: '/coffee-shop/pos',
-    icon: 'fa-solid fa-list-check',
+    icon: 'fa-solid fa-concierge-bell',
     label: 'Coffee Shop',
     exact: true,
   },
   {
     route: '/',
     icon: 'fa-solid fa-list-check',
-    label: 'My Tasks',
+    label: 'Inventory',
     exact: true,
   },
   {
