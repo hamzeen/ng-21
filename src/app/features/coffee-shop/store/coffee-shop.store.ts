@@ -1,7 +1,13 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
 import { Barista, BaristaShiftSession } from '../models/barista.model';
 import { CoffeeShopState } from '../models/coffee-shop-state.model';
-import { CoffeeOrder, OrderItem } from '../models/order.model';
+import {
+  CoffeeOrder,
+  OrderCurrency,
+  OrderItem,
+  PaymentMode,
+  PaymentStatus,
+} from '../models/order.model';
 
 const STORAGE_KEY = 'coffee-shop-demo-state';
 const TABLET_SHIFT_STORAGE_PREFIX = 'coffee-shop-demo-tablet-shift-';
@@ -12,6 +18,15 @@ const INITIAL_STATE: CoffeeShopState = {
   baristas: [],
   nextTokenNumber: 1,
 };
+
+export interface CreateOrderOptions {
+  paymentMode?: PaymentMode;
+  paymentStatus?: PaymentStatus;
+  paymentCompletedAt?: number;
+  receiptPrintRequested?: boolean;
+  receiptPrintedAt?: number;
+  currency?: OrderCurrency;
+}
 
 export interface ClaimOrderResult {
   success: boolean;
@@ -126,15 +141,28 @@ export class CoffeeShopStore {
     });
   }
 
-  createOrder(items: OrderItem[], customerName?: string): CoffeeOrder {
+  createOrder(
+    items: OrderItem[],
+    customerName?: string,
+    options: CreateOrderOptions = {},
+  ): CoffeeOrder {
     const now = Date.now();
     const tokenNumber = this.state().nextTokenNumber;
+    const normalizedItems = this.normalizeOrderItems(items);
+    const currency = options.currency ?? 'EUR';
     const order: CoffeeOrder = {
       id: crypto.randomUUID(),
       token: `A${tokenNumber.toString().padStart(2, '0')}`,
       customerName: customerName?.trim() || undefined,
-      items: items.filter((item) => item.name.trim() && item.quantity > 0),
+      items: normalizedItems,
+      totalAmount: this.calculateTotalAmount(normalizedItems),
+      currency,
       status: 'pending',
+      paymentMode: options.paymentMode ?? 'manual',
+      paymentStatus: options.paymentStatus ?? 'paid',
+      paymentCompletedAt: options.paymentCompletedAt ?? now,
+      receiptPrintRequested: options.receiptPrintRequested ?? true,
+      receiptPrintedAt: options.receiptPrintedAt,
       createdAt: now,
     };
 
@@ -366,15 +394,34 @@ export class CoffeeShopStore {
     this.registerBarista('tablet-2', 'Fabienne');
 
     const completedOrder = this.createOrder(
-      [{ id: crypto.randomUUID(), name: 'Cappuccino', quantity: 1 }],
+      [
+        {
+          id: crypto.randomUUID(),
+          name: 'Cappuccino',
+          quantity: 1,
+          unitPrice: 950,
+        },
+      ],
       'Walk-in',
     );
     const nimalOrder = this.createOrder(
-      [{ id: crypto.randomUUID(), name: 'Flat White', quantity: 2 }],
+      [
+        {
+          id: crypto.randomUUID(),
+          name: 'Flat White',
+          quantity: 2,
+          unitPrice: 1100,
+        },
+      ],
       'Table 3',
     );
     const saraOrder = this.createOrder([
-      { id: crypto.randomUUID(), name: 'Americano', quantity: 1 },
+      {
+        id: crypto.randomUUID(),
+        name: 'Americano',
+        quantity: 1,
+        unitPrice: 850,
+      },
     ]);
 
     this.claimOrder(completedOrder.id, 'tablet-1');
@@ -454,7 +501,22 @@ export class CoffeeShopStore {
     return {
       ...INITIAL_STATE,
       ...state,
-      orders: state.orders ?? [],
+      orders: (state.orders ?? []).map((order) => {
+        const items = this.normalizeOrderItems(order.items ?? [], {
+          allowZeroPrice: true,
+        });
+
+        return {
+          ...order,
+          items,
+          totalAmount: order.totalAmount ?? this.calculateTotalAmount(items),
+          currency: order.currency ?? 'LKR',
+          paymentMode: order.paymentMode ?? 'manual',
+          paymentStatus: order.paymentStatus ?? 'paid',
+          paymentCompletedAt: order.paymentCompletedAt ?? order.createdAt,
+          receiptPrintRequested: order.receiptPrintRequested ?? true,
+        };
+      }),
       baristas: (state.baristas ?? []).map((barista) => ({
         ...barista,
         clockedInAt: barista.clockedInAt ?? barista.lastSeenAt ?? now,
@@ -463,6 +525,28 @@ export class CoffeeShopStore {
       })),
       nextTokenNumber: state.nextTokenNumber ?? INITIAL_STATE.nextTokenNumber,
     };
+  }
+
+  private normalizeOrderItems(
+    items: OrderItem[],
+    options: { allowZeroPrice?: boolean } = {},
+  ): OrderItem[] {
+    return items
+      .filter((item) => item.name?.trim() && Number(item.quantity) > 0)
+      .map((item) => ({
+        id: item.id,
+        name: item.name.trim(),
+        quantity: Number(item.quantity),
+        unitPrice: Number(item.unitPrice ?? 0),
+      }))
+      .filter((item) => options.allowZeroPrice || item.unitPrice > 0);
+  }
+
+  private calculateTotalAmount(items: OrderItem[]): number {
+    return items.reduce(
+      (total, item) => total + Number(item.quantity || 0) * Number(item.unitPrice || 0),
+      0,
+    );
   }
 
   private persistState(state: CoffeeShopState): void {
