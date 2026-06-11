@@ -8,23 +8,31 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
   standalone: true,
   imports: [FormsModule],
   template: `
-    <main class="grid min-h-screen place-items-center bg-[var(--color-gray-100)] p-4">
-      <section class="relative w-full max-w-md overflow-hidden rounded-3xl bg-[var(--color-white)] p-6 shadow-sm">
-        <i aria-hidden="true" class="fa-solid fa-mug-hot absolute -right-5 -top-6 text-8xl text-[var(--color-primary)] opacity-5"></i>
+    <main class="grid min-h-screen place-items-center bg-gray-100 p-4">
+      <section class="relative w-full max-w-md overflow-hidden rounded-3xl bg-white p-6 shadow-sm">
+        <i
+          aria-hidden="true"
+          class="fa-solid fa-mug-hot absolute -right-5 -top-6 text-8xl text-primary opacity-5"
+        ></i>
         <div class="relative">
-          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-primary-subtle)] text-[var(--color-primary)]">
+          <span
+            class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-subtle text-primary"
+          >
             <i aria-hidden="true" class="fa-solid fa-tablet-screen-button"></i>
           </span>
-          <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-primary)]">{{ tabletId }}</p>
-          <h1 class="mt-2 text-3xl font-bold text-[var(--color-gray-900)]">Good morning</h1>
-          <p class="mt-2 text-sm text-[var(--color-gray-500)]">
-            Enter your name once at the start of the day. This tablet will remember your shift until tomorrow.
+          <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-primary">
+            {{ tabletId }}
+          </p>
+          <h1 class="mt-2 text-3xl font-bold text-gray-900">Good morning</h1>
+          <p class="mt-2 text-sm text-gray-500">
+            Enter your name once at the start of the day. This tablet will remember your shift until
+            tomorrow.
           </p>
 
-          <label class="mt-6 grid gap-2 text-sm font-medium text-[var(--color-gray-700)]">
+          <label class="mt-6 grid gap-2 text-sm font-medium text-gray-700">
             Barista name
             <input
-              class="rounded-xl border border-[var(--color-gray-300)] px-3 py-3 text-base outline-none focus:border-[var(--color-primary)]"
+              class="rounded-xl border border-gray-300 px-3 py-3 text-base outline-none focus:border-primary"
               [ngModel]="name()"
               (ngModelChange)="name.set($event)"
               placeholder="Ex: Nimal"
@@ -34,7 +42,7 @@ import { CoffeeShopStore } from '../../store/coffee-shop.store';
 
           <button
             type="button"
-            class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-4 py-3 text-sm font-semibold text-[var(--color-white)] hover:bg-[var(--color-primary-hover)]"
+            class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-white hover:bg-primary-hover"
             (click)="startShift()"
           >
             <i aria-hidden="true" class="fa-solid fa-play"></i>

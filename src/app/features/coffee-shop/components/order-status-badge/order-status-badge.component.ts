@@ -32,11 +32,11 @@ export class OrderStatusBadgeComponent {
   statusClass(): string {
     switch (this.status()) {
       case 'pending':
-        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-warning-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-warning)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-warning-subtle px-2.5 py-1 text-xs font-semibold text-warning';
       case 'in-progress':
-        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-info-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-info)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-info-subtle px-2.5 py-1 text-xs font-semibold text-info';
       case 'completed':
-        return 'inline-flex items-center gap-1.5 rounded-full bg-[var(--color-success-subtle)] px-2.5 py-1 text-xs font-semibold text-[var(--color-success)]';
+        return 'inline-flex items-center gap-1.5 rounded-full bg-success-subtle px-2.5 py-1 text-xs font-semibold text-success';
     }
   }
 }

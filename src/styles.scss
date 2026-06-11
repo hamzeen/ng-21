@@ -1,4 +1,47 @@
+@use 'tailwindcss';
 @use './design-system/styles' as *;
+
+@theme inline {
+  --color-primary: var(--app-color-primary);
+  --color-primary-hover: var(--app-color-primary-hover);
+  --color-primary-active: var(--app-color-primary-active);
+  --color-primary-subtle: var(--app-color-primary-subtle);
+
+  --color-secondary: var(--app-color-secondary);
+  --color-secondary-hover: var(--app-color-secondary-hover);
+  --color-secondary-subtle: var(--app-color-secondary-subtle);
+
+  --color-gray-900: var(--app-color-gray-900);
+  --color-gray-700: var(--app-color-gray-700);
+  --color-gray-600: var(--app-color-gray-600);
+  --color-gray-500: var(--app-color-gray-500);
+  --color-gray-300: var(--app-color-gray-300);
+  --color-gray-100: var(--app-color-gray-100);
+  --color-white: var(--app-color-white);
+
+  --color-success: var(--app-color-success);
+  --color-success-subtle: var(--app-color-success-subtle);
+  --color-warning: var(--app-color-warning);
+  --color-warning-subtle: var(--app-color-warning-subtle);
+  --color-danger: var(--app-color-danger);
+  --color-danger-subtle: var(--app-color-danger-subtle);
+  --color-info: var(--app-color-info);
+  --color-info-subtle: var(--app-color-info-subtle);
+
+  --color-surface: var(--app-color-bg-base);
+  --color-surface-subtle: var(--app-color-bg-subtle);
+  --color-overlay: var(--app-color-bg-overlay);
+
+  --color-ink: var(--app-color-text-primary);
+  --color-ink-secondary: var(--app-color-text-secondary);
+  --color-ink-muted: var(--app-color-text-muted);
+  --color-on-dark: var(--app-color-text-inverse);
+  --color-link: var(--app-color-text-link);
+
+  --color-border: var(--app-color-border-default);
+  --color-border-strong: var(--app-color-border-strong);
+  --color-border-focus: var(--app-color-border-focus);
+}
 
 html,
 body {

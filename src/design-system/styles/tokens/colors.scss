@@ -1,47 +1,88 @@
 :root {
   // ── Brand ────────────────────────────────
-  --color-primary: #ff385c;
-  --color-primary-hover: #e0294b;
-  --color-primary-active: #c8213e;
-  --color-primary-subtle: #fff0f3;
+  --app-color-primary: #ff385c;
+  --app-color-primary-hover: #e0294b;
+  --app-color-primary-active: #c8213e;
+  --app-color-primary-subtle: #fff0f3;
+
+  --color-primary: var(--app-color-primary);
+  --color-primary-hover: var(--app-color-primary-hover);
+  --color-primary-active: var(--app-color-primary-active);
+  --color-primary-subtle: var(--app-color-primary-subtle);
 
   // ── Secondary ────────────────────────────
-  --color-secondary: #00a699;
-  --color-secondary-hover: #008f83;
-  --color-secondary-subtle: #e6f7f6;
+  --app-color-secondary: #00a699;
+  --app-color-secondary-hover: #008f83;
+  --app-color-secondary-subtle: #e6f7f6;
+
+  --color-secondary: var(--app-color-secondary);
+  --color-secondary-hover: var(--app-color-secondary-hover);
+  --color-secondary-subtle: var(--app-color-secondary-subtle);
 
   // ── Neutrals ─────────────────────────────
-  --color-gray-900: #222222;
-  --color-gray-700: #484848;
-  --color-gray-500: #767676;
-  --color-gray-300: #dddddd;
-  --color-gray-100: #f7f7f7;
-  --color-white: #ffffff;
+  --app-color-gray-900: #222222;
+  --app-color-gray-700: #484848;
+  --app-color-gray-600: #5f5f5f;
+  --app-color-gray-500: #767676;
+  --app-color-gray-300: #dddddd;
+  --app-color-gray-100: #f7f7f7;
+  --app-color-white: #ffffff;
+
+  --color-gray-900: var(--app-color-gray-900);
+  --color-gray-700: var(--app-color-gray-700);
+  --color-gray-600: var(--app-color-gray-600);
+  --color-gray-500: var(--app-color-gray-500);
+  --color-gray-300: var(--app-color-gray-300);
+  --color-gray-100: var(--app-color-gray-100);
+  --color-white: var(--app-color-white);
 
   // ── Semantic ─────────────────────────────
-  --color-success: #008a05;
-  --color-success-subtle: #edfaee;
-  --color-warning: #c47d02;
-  --color-warning-subtle: #fef7e6;
-  --color-danger: #c13515;
-  --color-danger-subtle: #fceee9;
-  --color-info: #0066cc;
-  --color-info-subtle: #e6f0fa;
+  --app-color-success: #008a05;
+  --app-color-success-subtle: #edfaee;
+  --app-color-warning: #c47d02;
+  --app-color-warning-subtle: #fef7e6;
+  --app-color-danger: #c13515;
+  --app-color-danger-subtle: #fceee9;
+  --app-color-info: #0066cc;
+  --app-color-info-subtle: #e6f0fa;
+
+  --color-success: var(--app-color-success);
+  --color-success-subtle: var(--app-color-success-subtle);
+  --color-warning: var(--app-color-warning);
+  --color-warning-subtle: var(--app-color-warning-subtle);
+  --color-danger: var(--app-color-danger);
+  --color-danger-subtle: var(--app-color-danger-subtle);
+  --color-info: var(--app-color-info);
+  --color-info-subtle: var(--app-color-info-subtle);
 
   // ── Text ─────────────────────────────────
-  --color-text-primary: #222222;
-  --color-text-secondary: #484848;
-  --color-text-muted: #767676;
-  --color-text-inverse: #ffffff;
-  --color-text-link: #ff385c;
+  --app-color-text-primary: #222222;
+  --app-color-text-secondary: #484848;
+  --app-color-text-muted: #767676;
+  --app-color-text-inverse: #ffffff;
+  --app-color-text-link: #ff385c;
+
+  --color-text-primary: var(--app-color-text-primary);
+  --color-text-secondary: var(--app-color-text-secondary);
+  --color-text-muted: var(--app-color-text-muted);
+  --color-text-inverse: var(--app-color-text-inverse);
+  --color-text-link: var(--app-color-text-link);
 
   // ── Background ───────────────────────────
-  --color-bg-base: #ffffff;
-  --color-bg-subtle: #f7f7f7;
-  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  --app-color-bg-base: #ffffff;
+  --app-color-bg-subtle: #f7f7f7;
+  --app-color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  --color-bg-base: var(--app-color-bg-base);
+  --color-bg-subtle: var(--app-color-bg-subtle);
+  --color-bg-overlay: var(--app-color-bg-overlay);
 
   // ── Border ───────────────────────────────
-  --color-border-default: #dddddd;
-  --color-border-strong: #aaaaaa;
-  --color-border-focus: #222222;
+  --app-color-border-default: #dddddd;
+  --app-color-border-strong: #aaaaaa;
+  --app-color-border-focus: #222222;
+
+  --color-border-default: var(--app-color-border-default);
+  --color-border-strong: var(--app-color-border-strong);
+  --color-border-focus: var(--app-color-border-focus);
 }

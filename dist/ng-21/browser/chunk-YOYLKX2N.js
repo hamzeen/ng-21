@@ -1,0 +1,1 @@
+import{a as t}from"./chunk-BSKQR47Y.js";import"./chunk-7CGTOI24.js";var e=[{path:"",loadComponent:()=>import("./chunk-A7ER7UHY.js").then(o=>o.DsPreviewShellComponent),children:[...t.map(o=>({path:o.path,loadComponent:o.loadComponent})),{path:"",redirectTo:t[6].path,pathMatch:"full"}]}];export{e as DS_PREVIEW_ROUTES};

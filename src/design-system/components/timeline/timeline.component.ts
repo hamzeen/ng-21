@@ -5,27 +5,21 @@ import { TimelineIcon, TimelineItem } from './timeline.types';
   selector: 'ds-timeline',
   standalone: true,
   template: `
-    <section
-      class="w-full rounded-3xl border border-[var(--color-border-default)] bg-[var(--color-bg-base)] p-5 shadow-sm sm:p-6 lg:p-8"
-    >
+    <section class="w-full rounded-3xl border border-border bg-surface p-5 shadow-sm sm:p-6 lg:p-8">
       @if (heading()) {
         <header class="mb-8">
           @if (eyebrow()) {
-            <p
-              class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--color-primary)]"
-            >
+            <p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary">
               {{ eyebrow() }}
             </p>
           }
 
-          <h2
-            class="mt-2 text-2xl font-semibold tracking-tight text-[var(--color-text-primary)] sm:text-3xl"
-          >
+          <h2 class="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
             {{ heading() }}
           </h2>
 
           @if (description()) {
-            <p class="mt-3 max-w-2xl text-base leading-7 text-[var(--color-text-secondary)]">
+            <p class="mt-3 max-w-2xl text-base leading-7 text-ink-secondary">
               {{ description() }}
             </p>
           }
@@ -38,12 +32,12 @@ import { TimelineIcon, TimelineItem } from './timeline.types';
             @if (!last) {
               <span
                 aria-hidden="true"
-                class="absolute left-5 top-11 h-[calc(100%-2.75rem)] w-px bg-[var(--color-border-default)] sm:left-6 sm:top-[52px] sm:h-[calc(100%-3.25rem)]"
+                class="absolute left-5 top-11 h-[calc(100%-2.75rem)] w-px bg-border sm:left-6 sm:top-[52px] sm:h-[calc(100%-3.25rem)]"
               ></span>
             }
 
             <div
-              class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border-default)] bg-[var(--color-bg-base)] text-[var(--color-text-link)] shadow-sm sm:h-12 sm:w-12"
+              class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-link shadow-sm sm:h-12 sm:w-12"
             >
               @switch (item.icon ?? fallbackIcon(index)) {
                 @case ('mail') {
@@ -141,14 +135,12 @@ import { TimelineIcon, TimelineItem } from './timeline.types';
             </div>
 
             <article class="min-w-0 flex-1 pt-1">
-              <h3
-                class="text-lg font-semibold leading-7 tracking-tight text-[var(--color-text-primary)] sm:text-xl"
-              >
+              <h3 class="text-lg font-semibold leading-7 tracking-tight text-ink sm:text-xl">
                 {{ item.title }}
               </h3>
 
               <p
-                class="mt-1 max-w-3xl break-words text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base sm:leading-7"
+                class="mt-1 max-w-3xl break-words text-sm leading-6 text-ink-secondary sm:text-base sm:leading-7"
               >
                 {{ item.description }}
               </p>
